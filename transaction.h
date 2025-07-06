@@ -22,7 +22,11 @@ public:
     explicit Transaction(Customer *customer, const QDateTime &dateTime);
     ~Transaction();
 
+    Customer* getCustomer() const;
+    QDateTime getDateTime() const;
 
+    void addItem(Item *item, int quantity);
+    QList<PurchaseItem> items;
 };
 
 #endif // TRANSACTION_H
