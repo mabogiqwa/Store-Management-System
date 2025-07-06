@@ -348,6 +348,12 @@
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
 			null
+		],
+		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/transaction.h",
+			"MU",
+			"EWIEGA46WW/moc_transaction.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -438,6 +444,11 @@
 		],
 		[
 			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/mainwindow.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/transaction.cpp",
 			"MU",
 			null
 		]

@@ -20,7 +20,7 @@ public:
 
     QString getTypeString() const;
 private:
-    QString customerName;
+    QString itemName;
     ItemType itemType;
 };
 
