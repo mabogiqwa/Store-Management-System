@@ -24,3 +24,18 @@ ItemType Item::getType() const
 {
     return itemType;
 }
+
+void Item::setType(ItemType type)
+{
+    itemType = type;
+}
+
+QString Item::getTypeString() const
+{
+    if (itemType == ItemType::Book)
+        return "Book";
+    else if (itemType == ItemType::Magazine)
+        return "Magazine";
+    else
+        return "Unknown";
+}
