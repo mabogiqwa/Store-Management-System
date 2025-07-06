@@ -24,9 +24,11 @@ public:
 
     Customer* getCustomer() const;
     QDateTime getDateTime() const;
-
     void addItem(Item *item, int quantity);
+private:
     QList<PurchaseItem> items;
+    Customer *customer;
+    QDatetime dateTime;
 };
 
 #endif // TRANSACTION_H
