@@ -338,6 +338,12 @@
 			null
 		],
 		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/customermanager.h",
+			"MU",
+			"EWIEGA46WW/moc_customermanager.cpp",
+			null
+		],
+		[
 			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/item.h",
 			"MU",
 			"EWIEGA46WW/moc_item.cpp",
@@ -429,6 +435,11 @@
 	[
 		[
 			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/customer.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/customermanager.cpp",
 			"MU",
 			null
 		],
