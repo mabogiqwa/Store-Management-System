@@ -3,8 +3,12 @@
 
 #include <QAbstractItemModel>
 #include <QObject>
+#include <QStringList>
+#include <QVariant>
 #include "customer.h"
 #include "transaction.h"
+#include "transactionmanager.h"
+#include "item.h"
 
 class TransactionModel : public QAbstractItemModel
 {

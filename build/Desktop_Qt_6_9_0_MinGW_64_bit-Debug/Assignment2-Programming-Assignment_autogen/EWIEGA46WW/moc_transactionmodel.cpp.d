@@ -5,6 +5,8 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Qt/6.9.0/mingw_64/include/QtCore/QList \
   C:/Qt/6.9.0/mingw_64/include/QtCore/QObject \
   C:/Qt/6.9.0/mingw_64/include/QtCore/QString \
+  C:/Qt/6.9.0/mingw_64/include/QtCore/QStringList \
+  C:/Qt/6.9.0/mingw_64/include/QtCore/QVariant \
   C:/Qt/6.9.0/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/q20functional.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/q20memory.h \
@@ -337,4 +339,6 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Users/realm/Documents/Assignment2-Programming-Assignment/customer.h \
-  C:/Users/realm/Documents/Assignment2-Programming-Assignment/transaction.h
+  C:/Users/realm/Documents/Assignment2-Programming-Assignment/item.h \
+  C:/Users/realm/Documents/Assignment2-Programming-Assignment/transaction.h \
+  C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmanager.h

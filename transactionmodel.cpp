@@ -2,7 +2,7 @@
 
 TransactionModel::TransactionModel(QObject *parent) : QAbstractItemModel(parent)
 {
-    //buildCustomerNodes();
+    buildCustomerNodes();
 }
 
 TransactionModel::~TransactionModel()
@@ -78,21 +78,77 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
         return QVariant();
 
     if (role == Qt::DisplayRole) {
-        Transaction *transaction =
+        Transaction *transaction = static_cast<Transaction*>(index.internalPointer());
+
+        if (!transaction) {
+            int customerIndex = index.row();
+            if (customerIndex < mCustomerNodes.size()) {
+                const CustomerNode &node = mCustomerNodes[customerIndex];
+                if (index.column() == 0) {
+                    return node.customer->getName();
+                }
+            }
+        } else {
+            switch(index.column()) {
+                case 0:
+                    return transaction->getDateTime().toString("yyyy-MM-dd hh:mm:ss");
+                case 1: {
+                    QStringList itemNames;
+                    for (const PurchaseItem &item : transaction->getItems()) {
+                        itemNames << item.item->getName();
+                    }
+                    return itemNames.join(", ");
+                }
+                case 2: {
+                    QStringList quantities;
+                    for (const PurchaseItem &item : transaction->getItems()) {
+                        quantities << QString::number(item.quantity);
+                    }
+                    return quantities.join(", ");
+                }
+            }
+        }
     }
+
+    return QVariant();
 }
 
 QVariant TransactionModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
+    if (orientation == Qt::Horizontal && role == Qt::DisplayRole) {
+        switch (section) {
+            case 0: return "Customer/Date";
+            case 1: return "Items";
+            case 2: return "Quantities";
+        }
+    }
 
+    return QVariant();
 }
 
 void TransactionModel::refreshModel()
 {
-
+    beginResetModel();
+    buildCustomerNodes();
+    endResetModel();
 }
 
 void TransactionModel::buildCustomerNodes()
 {
+    mCustomerNodes.clear();
 
+    TransactionManager *transactionManager = TransactionManager::getInstance();
+    QList<Transaction*> allTransactions = transactionManager->getTransactions();
+
+    QHash<Customer*, QList<Transaction*>> customerTransactions;
+    for (Transaction *transaction : allTransactions) {
+        customerTransactions[transaction->getCustomer()].append(transaction);
+    }
+
+    for (auto it = customerTransactions.begin(); it != customerTransactions.end(); ++it) {
+        CustomerNode node;
+        node.customer = it.key();
+        node.transactions = it.value();
+        mCustomerNodes.append(node);
+    }
 }
