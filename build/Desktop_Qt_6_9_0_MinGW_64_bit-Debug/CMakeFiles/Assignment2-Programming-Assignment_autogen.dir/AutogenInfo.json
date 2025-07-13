@@ -372,6 +372,12 @@
 			"MU",
 			"EWIEGA46WW/moc_transactionmanager.cpp",
 			null
+		],
+		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmodel.h",
+			"MU",
+			"EWIEGA46WW/moc_transactionmodel.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -482,6 +488,11 @@
 		],
 		[
 			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmanager.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmodel.cpp",
 			"MU",
 			null
 		]

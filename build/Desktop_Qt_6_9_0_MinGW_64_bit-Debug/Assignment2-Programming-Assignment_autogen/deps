@@ -1,4 +1,5 @@
 Assignment2-Programming-Assignment_autogen/timestamp: \
+	C:/Qt/6.9.0/mingw_64/include/QtCore/QAbstractItemModel \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/QDateTime \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/QList \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/QObject \
@@ -10,6 +11,7 @@ Assignment2-Programming-Assignment_autogen/timestamp: \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/q20type_traits.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/q20utility.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/q23utility.h \
+	C:/Qt/6.9.0/mingw_64/include/QtCore/qabstractitemmodel.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qalgorithms.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qanystringview.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qarraydata.h \
@@ -601,4 +603,6 @@ Assignment2-Programming-Assignment_autogen/timestamp: \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transaction.h \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmanager.cpp \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmanager.h \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmodel.cpp \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmodel.h \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe
