@@ -113,6 +113,14 @@ build CMakeFiles/Assignment2-Programming-Assignment.dir/itemmanager.cpp.obj: CXX
   OBJECT_DIR = CMakeFiles\Assignment2-Programming-Assignment.dir
   OBJECT_FILE_DIR = CMakeFiles\Assignment2-Programming-Assignment.dir
 
+build CMakeFiles/Assignment2-Programming-Assignment.dir/transactionmanager.cpp.obj: CXX_COMPILER__Assignment2-Programming-Assignment_unscanned_Debug C$:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmanager.cpp || cmake_object_order_depends_target_Assignment2-Programming-Assignment
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\Assignment2-Programming-Assignment.dir\transactionmanager.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/Assignment2-Programming-Assignment_autogen/include -isystem C:/Qt/6.9.0/mingw_64/include/QtCore -isystem C:/Qt/6.9.0/mingw_64/include -isystem C:/Qt/6.9.0/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.9.0/mingw_64/include/QtWidgets -isystem C:/Qt/6.9.0/mingw_64/include/QtGui
+  OBJECT_DIR = CMakeFiles\Assignment2-Programming-Assignment.dir
+  OBJECT_FILE_DIR = CMakeFiles\Assignment2-Programming-Assignment.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Assignment2-Programming-Assignment
@@ -121,7 +129,7 @@ build CMakeFiles/Assignment2-Programming-Assignment.dir/itemmanager.cpp.obj: CXX
 #############################################
 # Link the executable Assignment2-Programming-Assignment.exe
 
-build Assignment2-Programming-Assignment.exe: CXX_EXECUTABLE_LINKER__Assignment2-Programming-Assignment_Debug CMakeFiles/Assignment2-Programming-Assignment.dir/Assignment2-Programming-Assignment_autogen/mocs_compilation.cpp.obj CMakeFiles/Assignment2-Programming-Assignment.dir/main.cpp.obj CMakeFiles/Assignment2-Programming-Assignment.dir/mainwindow.cpp.obj CMakeFiles/Assignment2-Programming-Assignment.dir/customer.cpp.obj CMakeFiles/Assignment2-Programming-Assignment.dir/item.cpp.obj CMakeFiles/Assignment2-Programming-Assignment.dir/transaction.cpp.obj CMakeFiles/Assignment2-Programming-Assignment.dir/customermanager.cpp.obj CMakeFiles/Assignment2-Programming-Assignment.dir/itemmanager.cpp.obj | C$:/Qt/6.9.0/mingw_64/lib/libQt6Widgets.a C$:/Qt/6.9.0/mingw_64/lib/libQt6Gui.a C$:/Qt/6.9.0/mingw_64/lib/libQt6Core.a C$:/Qt/6.9.0/mingw_64/lib/libQt6EntryPoint.a || Assignment2-Programming-Assignment_autogen Assignment2-Programming-Assignment_autogen_timestamp_deps
+build Assignment2-Programming-Assignment.exe: CXX_EXECUTABLE_LINKER__Assignment2-Programming-Assignment_Debug CMakeFiles/Assignment2-Programming-Assignment.dir/Assignment2-Programming-Assignment_autogen/mocs_compilation.cpp.obj CMakeFiles/Assignment2-Programming-Assignment.dir/main.cpp.obj CMakeFiles/Assignment2-Programming-Assignment.dir/mainwindow.cpp.obj CMakeFiles/Assignment2-Programming-Assignment.dir/customer.cpp.obj CMakeFiles/Assignment2-Programming-Assignment.dir/item.cpp.obj CMakeFiles/Assignment2-Programming-Assignment.dir/transaction.cpp.obj CMakeFiles/Assignment2-Programming-Assignment.dir/customermanager.cpp.obj CMakeFiles/Assignment2-Programming-Assignment.dir/itemmanager.cpp.obj CMakeFiles/Assignment2-Programming-Assignment.dir/transactionmanager.cpp.obj | C$:/Qt/6.9.0/mingw_64/lib/libQt6Widgets.a C$:/Qt/6.9.0/mingw_64/lib/libQt6Gui.a C$:/Qt/6.9.0/mingw_64/lib/libQt6Core.a C$:/Qt/6.9.0/mingw_64/lib/libQt6EntryPoint.a || Assignment2-Programming-Assignment_autogen Assignment2-Programming-Assignment_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = C:/Qt/6.9.0/mingw_64/lib/libQt6Widgets.a  C:/Qt/6.9.0/mingw_64/lib/libQt6Gui.a  C:/Qt/6.9.0/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lmingw32  C:/Qt/6.9.0/mingw_64/lib/libQt6EntryPoint.a  -lshell32  -ld3d11  -ldxgi  -ldxguid  -ld3d12  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
