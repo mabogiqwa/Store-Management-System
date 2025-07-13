@@ -350,6 +350,12 @@
 			null
 		],
 		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/itemmanager.h",
+			"MU",
+			"EWIEGA46WW/moc_itemmanager.cpp",
+			null
+		],
+		[
 			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
@@ -445,6 +451,11 @@
 		],
 		[
 			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/item.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/itemmanager.cpp",
 			"MU",
 			null
 		],

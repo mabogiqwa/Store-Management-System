@@ -26,6 +26,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         item.h item.cpp
         transaction.h transaction.cpp
         customermanager.h customermanager.cpp
+        itemmanager.h itemmanager.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Assignment2-Programming-Assignment APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

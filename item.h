@@ -1,6 +1,9 @@
 #ifndef ITEM_H
 #define ITEM_H
 
+#include <QString>
+//#include <ItemType>
+
 enum class Itemtype {
     Book,
     Magazine
@@ -9,19 +12,19 @@ enum class Itemtype {
 class Item
 {
 public:
-    explicit Item(const QString &name, ItemType type);
+    explicit Item(const QString &name, Itemtype type);
     ~Item();
 
     QString getName() const;
     void setName(const QString &name);
 
-    ItemType getType() const;
-    void setType(ItemType type);
+    Itemtype getType() const;
+    void setType(Itemtype type);
 
     QString getTypeString() const;
 private:
     QString itemName;
-    ItemType itemType;
+    Itemtype itemType;
 };
 
 #endif // ITEM_H

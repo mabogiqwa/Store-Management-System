@@ -1,6 +1,6 @@
 #include "item.h"
 
-Item::Item(const QString &name, ItemType type) : itemName(name), itemtype(type)
+Item::Item(const QString &name, Itemtype type) : itemName(name), itemType(type)
 {
 
 }
@@ -20,21 +20,21 @@ void Item::setName(const QString &name)
     itemName = name;
 }
 
-ItemType Item::getType() const
+Itemtype Item::getType() const
 {
     return itemType;
 }
 
-void Item::setType(ItemType type)
+void Item::setType(Itemtype type)
 {
     itemType = type;
 }
 
 QString Item::getTypeString() const
 {
-    if (itemType == ItemType::Book)
+    if (itemType == Itemtype::Book)
         return "Book";
-    else if (itemType == ItemType::Magazine)
+    else if (itemType == Itemtype::Magazine)
         return "Magazine";
     else
         return "Unknown";

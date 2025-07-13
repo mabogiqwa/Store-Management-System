@@ -1,5 +1,4 @@
 #include "customermanager.h"
-#include "customer.h"
 
 CustomerManager* CustomerManager::sInstance = nullptr;
 
@@ -25,7 +24,7 @@ void CustomerManager::addCustomer(const QString &name) {
 
 Customer* CustomerManager::findCustomer(const QString &name) const
 {
-    for (Customer *customer : mCustomers) {
+    for (Customer *customer : mCustomer) {
         if (customer->getName() == name) {
             return customer;
         }
@@ -33,12 +32,12 @@ Customer* CustomerManager::findCustomer(const QString &name) const
     return nullptr;
 }
 
-QList<Customer*> CustomerManager::getCustomers() const
+QList<Customer*> CustomerManager::getCustomer() const
 {
     return mCustomer;
 }
 
 CustomerManager::~CustomerManager() {
-    qDeleteAll(mCustomers);
-    mCustomers.clear();
+    qDeleteAll(mCustomer);
+    mCustomer.clear();
 }

@@ -2,7 +2,7 @@
 #include "customer.h"
 #include "item.h"
 
-Transaction::Transaction(Customer *cstmer, const QDatetime &dT)
+Transaction::Transaction(Customer *cstmer, const QDateTime &dT)
 {
     customer = cstmer;
     dateTime = dT;

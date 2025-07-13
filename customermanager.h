@@ -1,6 +1,10 @@
 #ifndef CUSTOMERMANAGER_H
 #define CUSTOMERMANAGER_H
 
+#include <QString>
+#include <QObject>
+#include "customer.h"
+
 class CustomerManager : public QObject
 {
     Q_OBJECT

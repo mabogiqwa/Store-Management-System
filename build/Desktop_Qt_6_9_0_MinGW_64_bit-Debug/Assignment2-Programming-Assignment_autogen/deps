@@ -1,4 +1,6 @@
 Assignment2-Programming-Assignment_autogen/timestamp: \
+	C:/Qt/6.9.0/mingw_64/include/QtCore/QObject \
+	C:/Qt/6.9.0/mingw_64/include/QtCore/QString \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/q17memory.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/q20functional.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/q20iterator.h \
@@ -581,7 +583,15 @@ Assignment2-Programming-Assignment_autogen/timestamp: \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/customer.cpp \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/customer.h \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/customermanager.cpp \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/customermanager.h \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/item.cpp \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/item.h \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/itemmanager.cpp \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/itemmanager.h \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/main.cpp \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/mainwindow.cpp \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/mainwindow.h \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transaction.cpp \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transaction.h \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

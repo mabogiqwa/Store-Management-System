@@ -24,11 +24,12 @@ public:
 
     Customer* getCustomer() const;
     QDateTime getDateTime() const;
+    QList<PurchaseItem> getItems() const;
     void addItem(Item *item, int quantity);
 private:
     QList<PurchaseItem> items;
     Customer *customer;
-    QDatetime dateTime;
+    QDateTime dateTime;
 };
 
 #endif // TRANSACTION_H
