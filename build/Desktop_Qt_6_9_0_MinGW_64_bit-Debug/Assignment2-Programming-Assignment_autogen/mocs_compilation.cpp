@@ -2,3 +2,4 @@
 #include "EWIEGA46WW/moc_customermanager.cpp"
 #include "EWIEGA46WW/moc_itemmanager.cpp"
 #include "EWIEGA46WW/moc_mainwindow.cpp"
+#include "EWIEGA46WW/moc_transactionmanager.cpp"

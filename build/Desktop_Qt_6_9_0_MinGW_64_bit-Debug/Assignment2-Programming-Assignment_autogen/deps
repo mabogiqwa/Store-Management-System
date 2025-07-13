@@ -1,4 +1,5 @@
 Assignment2-Programming-Assignment_autogen/timestamp: \
+	C:/Qt/6.9.0/mingw_64/include/QtCore/QDateTime \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/QList \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/QObject \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/QString \
@@ -23,6 +24,7 @@ Assignment2-Programming-Assignment_autogen/timestamp: \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qbytearrayalgorithms.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qbytearraylist.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qbytearrayview.h \
+	C:/Qt/6.9.0/mingw_64/include/QtCore/qcalendar.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qchar.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qcompare.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qcompare_impl.h \
@@ -36,6 +38,7 @@ Assignment2-Programming-Assignment_autogen/timestamp: \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qcontiguouscache.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qdarwinhelpers.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qdatastream.h \
+	C:/Qt/6.9.0/mingw_64/include/QtCore/qdatetime.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qdebug.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qendian.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qexceptionhandling.h \
@@ -55,6 +58,7 @@ Assignment2-Programming-Assignment_autogen/timestamp: \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qlatin1stringview.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qline.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qlist.h \
+	C:/Qt/6.9.0/mingw_64/include/QtCore/qlocale.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qlogging.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qmalloc.h \
 	C:/Qt/6.9.0/mingw_64/include/QtCore/qmap.h \
@@ -595,4 +599,6 @@ Assignment2-Programming-Assignment_autogen/timestamp: \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/mainwindow.h \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transaction.cpp \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transaction.h \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmanager.cpp \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmanager.h \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe
