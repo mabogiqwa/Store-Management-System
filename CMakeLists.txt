@@ -29,10 +29,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         itemmanager.h itemmanager.cpp
         transactionmanager.h transactionmanager.cpp
         transactionmodel.h transactionmodel.cpp
-        udpbroadcaster.h udpbroadcaster.cpp
         customerdialog.h customerdialog.cpp
         itemdialog.h itemdialog.cpp
-        receiverwindow.h receiverwindow.cpp
         transactiondialog.h transactiondialog.cpp
     )
 # Define target properties for Android with Qt 6 as:

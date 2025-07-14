@@ -4,6 +4,6 @@
 #include "EWIEGA46WW/moc_itemdialog.cpp"
 #include "EWIEGA46WW/moc_itemmanager.cpp"
 #include "EWIEGA46WW/moc_mainwindow.cpp"
+#include "EWIEGA46WW/moc_transactiondialog.cpp"
 #include "EWIEGA46WW/moc_transactionmanager.cpp"
 #include "EWIEGA46WW/moc_transactionmodel.cpp"
-#include "EWIEGA46WW/moc_udpbroadcaster.cpp"

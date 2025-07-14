@@ -1,15 +1,16 @@
 # ninja log v6
-13	950	7742100137102380	build.ninja	40fb15084b0f5d20
+13	950	7742161102461547	build.ninja	40fb15084b0f5d20
 4087	15024	7741373134151246	CMakeFiles/Assignment2-Programming-Assignment.dir/mainwindow.cpp.obj	451b32706a8c9a18
-1817	8021	7742080388898339	CMakeFiles/Assignment2-Programming-Assignment.dir/Assignment2-Programming-Assignment_autogen/mocs_compilation.cpp.obj	bcf5ec9f8560381
-90	566	7742080797273707	Assignment2-Programming-Assignment_autogen/timestamp	cbed05049d9b41d
-90	566	7742080797273707	Assignment2-Programming-Assignment_autogen/mocs_compilation.cpp	cbed05049d9b41d
+401	4792	7742160676177588	CMakeFiles/Assignment2-Programming-Assignment.dir/Assignment2-Programming-Assignment_autogen/mocs_compilation.cpp.obj	bcf5ec9f8560381
+45	398	7742160674732752	Assignment2-Programming-Assignment_autogen/timestamp	cbed05049d9b41d
+45	398	7742160674732752	Assignment2-Programming-Assignment_autogen/mocs_compilation.cpp	cbed05049d9b41d
 15025	22334	7741373243528779	CMakeFiles/Assignment2-Programming-Assignment.dir/transactionmodel.cpp.obj	8760326fd9db0e0c
-90	566	7742080797273707	C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/Assignment2-Programming-Assignment_autogen/timestamp	cbed05049d9b41d
-90	566	7742080797273707	C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/Assignment2-Programming-Assignment_autogen/mocs_compilation.cpp	cbed05049d9b41d
+45	398	7742160674732752	C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/Assignment2-Programming-Assignment_autogen/timestamp	cbed05049d9b41d
+45	398	7742160674732752	C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/Assignment2-Programming-Assignment_autogen/mocs_compilation.cpp	cbed05049d9b41d
 499	6923	7742031409332971	CMakeFiles/Assignment2-Programming-Assignment.dir/customerdialog.cpp.obj	1b929c8123537e2a
 4093	11432	7741373134211213	CMakeFiles/Assignment2-Programming-Assignment.dir/customer.cpp.obj	4ffad41678d6f901
 4083	15524	7741373134101274	CMakeFiles/Assignment2-Programming-Assignment.dir/main.cpp.obj	a978094a887f0150
+2163	12892	7742160031569710	CMakeFiles/Assignment2-Programming-Assignment.dir/transactiondialog.cpp.obj	c070c47432bc0139
 6556	8434	7742080861807152	Assignment2-Programming-Assignment.exe	c89b086adda8cd2c
 11432	19341	7741373207599312	CMakeFiles/Assignment2-Programming-Assignment.dir/itemmanager.cpp.obj	4c9decfb9f57d78d
 4098	11423	7741373134261180	CMakeFiles/Assignment2-Programming-Assignment.dir/item.cpp.obj	df5dc9008f410bbf
@@ -18,3 +19,10 @@
 14577	21243	7741373239041340	CMakeFiles/Assignment2-Programming-Assignment.dir/transactionmanager.cpp.obj	a1a76698d62d7bbe
 1612	6851	7741979919257768	CMakeFiles/Assignment2-Programming-Assignment.dir/udpbroadcaster.cpp.obj	630d1ebadd548097
 568	6556	7742080802050972	CMakeFiles/Assignment2-Programming-Assignment.dir/itemdialog.cpp.obj	ae0a6b63cbd7edbb
+2158	12852	7742160031569710	CMakeFiles/Assignment2-Programming-Assignment.dir/receiverwindow.cpp.obj	fd8447827d6f38f4
+48	321	7742161178179735	Assignment2-Programming-Assignment_autogen/timestamp	cbed05049d9b41d
+48	321	7742161178179735	Assignment2-Programming-Assignment_autogen/mocs_compilation.cpp	cbed05049d9b41d
+48	321	7742161178179735	C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/Assignment2-Programming-Assignment_autogen/timestamp	cbed05049d9b41d
+48	321	7742161178179735	C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/Assignment2-Programming-Assignment_autogen/mocs_compilation.cpp	cbed05049d9b41d
+323	4607	7742161179429640	CMakeFiles/Assignment2-Programming-Assignment.dir/Assignment2-Programming-Assignment_autogen/mocs_compilation.cpp.obj	bcf5ec9f8560381
+4607	5388	7742161222247894	Assignment2-Programming-Assignment.exe	2ad4642b3ce2e09c
