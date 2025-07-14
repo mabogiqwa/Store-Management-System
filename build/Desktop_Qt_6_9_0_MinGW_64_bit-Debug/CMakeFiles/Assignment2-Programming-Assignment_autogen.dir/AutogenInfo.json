@@ -424,6 +424,12 @@
 			null
 		],
 		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactiondialog.h",
+			"MU",
+			"EWIEGA46WW/moc_transactiondialog.cpp",
+			null
+		],
+		[
 			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmanager.h",
 			"MU",
 			"EWIEGA46WW/moc_transactionmanager.cpp",
@@ -562,6 +568,11 @@
 		],
 		[
 			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/transaction.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactiondialog.cpp",
 			"MU",
 			null
 		],
