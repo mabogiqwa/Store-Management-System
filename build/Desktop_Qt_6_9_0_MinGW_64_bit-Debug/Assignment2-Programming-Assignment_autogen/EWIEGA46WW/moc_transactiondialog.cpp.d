@@ -53,6 +53,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Qt/6.9.0/mingw_64/include/QtCore/qhashfunctions.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qiodevice.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qiodevicebase.h \
+  C:/Qt/6.9.0/mingw_64/include/QtCore/qitemselectionmodel.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qiterable.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qiterator.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qlatin1stringview.h \
@@ -167,22 +168,35 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QGroupBox \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QHBoxLayout \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QLabel \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/QListWidget \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMessageBox \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/QPushButton \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/QSpinBox \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QVBoxLayout \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractbutton.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractitemview.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractslider.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractspinbox.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qboxlayout.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qcombobox.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qdialog.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qframe.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qgridlayout.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qgroupbox.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlabel.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlayout.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlayoutitem.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlistview.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlistwidget.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qmessagebox.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qpushbutton.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qrubberband.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qslider.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qspinbox.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qstyle.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qstyleoption.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qtabbar.h \
@@ -403,5 +417,6 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Users/realm/Documents/Assignment2-Programming-Assignment/customer.h \
+  C:/Users/realm/Documents/Assignment2-Programming-Assignment/customermanager.h \
   C:/Users/realm/Documents/Assignment2-Programming-Assignment/item.h \
   C:/Users/realm/Documents/Assignment2-Programming-Assignment/itemmanager.h

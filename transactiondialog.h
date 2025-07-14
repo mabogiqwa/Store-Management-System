@@ -12,13 +12,15 @@
 #include <QComboBox>
 #include <QLabel>
 #include <QGroupBox>
+#include <QSpinBox>
+#include <QMessageBox>
+#include <QPushButton>
+#include <QListWidget>
 
 class QComboBox;
-class QListWidget;
-class QSpinBox;
-class QPushButton;
 class Customer;
 class Item;
+#include "customermanager.h"
 
 struct SelectedItem {
     Item *item;
