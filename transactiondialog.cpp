@@ -83,7 +83,9 @@ void TransactionDialog::accept()
 
 void TransactionDialog::setupUI()
 {
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
+    QGroupBox *customerGroup = new QGroupBox("Customer", this);
 }
 
 void TransactionDialog::populateCustomers()
