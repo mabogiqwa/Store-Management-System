@@ -32,6 +32,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         udpbroadcaster.h udpbroadcaster.cpp
         customerdialog.h customerdialog.cpp
         itemdialog.h itemdialog.cpp
+        receiverwindow.h receiverwindow.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Assignment2-Programming-Assignment APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
