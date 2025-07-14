@@ -5,6 +5,7 @@
 #include <QUdpSocket>
 #include <QTimer>
 #include "transaction.h"
+#include "transactionmanager.h"
 #include "customer.h"
 #include "item.h"
 #include <QHostAddress>

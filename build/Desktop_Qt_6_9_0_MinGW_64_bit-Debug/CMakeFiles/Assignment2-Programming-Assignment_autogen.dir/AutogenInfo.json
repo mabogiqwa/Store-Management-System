@@ -376,6 +376,12 @@
 			null
 		],
 		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/customerdialog.h",
+			"MU",
+			"EWIEGA46WW/moc_customerdialog.cpp",
+			null
+		],
+		[
 			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/customermanager.h",
 			"MU",
 			"EWIEGA46WW/moc_customermanager.cpp",
@@ -385,6 +391,12 @@
 			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/item.h",
 			"MU",
 			"EWIEGA46WW/moc_item.cpp",
+			null
+		],
+		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/itemdialog.h",
+			"MU",
+			"EWIEGA46WW/moc_itemdialog.cpp",
 			null
 		],
 		[
@@ -503,12 +515,22 @@
 			null
 		],
 		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/customerdialog.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/customermanager.cpp",
 			"MU",
 			null
 		],
 		[
 			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/item.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/itemdialog.cpp",
 			"MU",
 			null
 		],
