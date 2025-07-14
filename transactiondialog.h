@@ -9,12 +9,14 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QComboBox>
+#include <QLabel>
+#include <QGroupBox>
 
 class QComboBox;
 class QListWidget;
 class QSpinBox;
 class QPushButton;
-class QLabel;
 class Customer;
 class Item;
 
