@@ -176,6 +176,25 @@ void MainWindow::setupConnections()
 {
     //menu actions
     connect(mAddCustomerAction, &QAction::triggered, this, &MainWindow::onAddCustomer);
+    connect(mAddItemAction, &QAction::triggered, this, &MainWindow::onAddItem);
+    connect(mCreateTransactionAction, &QAction::triggered, this, &MainWindow::onCreateTransaction);
+    connect(mRestoreItemsAction, &QAction::triggered, this, &MainWindow::onRestoreItems);
+    connect(mStartBroadcastAction, &QAction::triggered, this, &MainWindow::onStartBroadcast);
+    connect(mStopBroadcastAction, &QAction::triggered, this, &MainWindow::onStopBroadcast);
+    connect(mExitAction, &QAction::triggered, this, &MainWindow::onExit);
+    connect(mAboutAction, &QAction::triggered, this, &MainWindow::onAbout);
+    connect(mHelpAction, &QAction::triggered, this, &MainWindow::onHelp);
+
+    //Manager connections
+    TransactionManager *transactionManager = TransactionManager::getInstance();
+    connect(transactionManager, &TransactionManager::transactionAdded, this, &MainWindow::onTransactionAdded);
+
+    CustomerManager *customerManager = CustomerManager::getInstance();
+    connect(customerManager, &CustomerManager::customerAdded, this, &MainWindow::updateActions);
+
+    ItemManager *itemManager = ItemManager::getInstance();
+    connect(itemManager, &ItemManager::itemAdded, this, &MainWindow::updateActions);
+    connect(itemManager, &ItemManager::itemsRestored, this, &MainWindow::updateActions);
 }
 
 void MainWindow::updateActions()
