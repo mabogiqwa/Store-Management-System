@@ -5,15 +5,15 @@ MainWindow::MainWindow(QWidget *parent)
 {
     qDebug() << "MainWindow constructor done";
     setupUI();
-    setupMenus();
-    setupToolBar();
+    //setupMenus();
+    //setupToolBar();
     //setupStatusBar();
     //setupConnections();
 
     setWindowTitle("Store Management System");
     resize(800,600);
 
-    logMessage("App started");
+    //logMessage("App started");
     //updateActions();
 }
 
@@ -158,11 +158,6 @@ void MainWindow::setupUI()
 
     mSplitter->addWidget(mTransactionView);
 
-    mLogTextEdit = new QTextEdit(this);
-    mLogTextEdit->setReadOnly(true);
-    mLogTextEdit->setMaximumHeight(150);
-    mLogTextEdit->setPlaceholderText("Application log messages appear here");
-
     mSplitter->setSizes({400,150});
 
     mainLayout->addWidget(mSplitter);
@@ -218,11 +213,15 @@ void MainWindow::setupToolBar()
 
     mAddCustomerAction = new QAction("Add customer", this);
     mToolBar->addAction(mAddCustomerAction);
+    mAddItemAction = new QAction("Add item", this);
     mToolBar->addAction(mAddItemAction);
     mToolBar->addSeparator();
+    mCreateTransactionAction = new QAction("Create transaction", this);
     mToolBar->addAction(mCreateTransactionAction);
     mToolBar->addSeparator();
+    mStartBroadcastAction = new QAction("Start broadcast", this);
     mToolBar->addAction(mStartBroadcastAction);
+    mStopBroadcastAction = new QAction("Stop broadcast", this);
     mToolBar->addAction(mStopBroadcastAction);
 }
 
