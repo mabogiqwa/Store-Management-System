@@ -12,7 +12,7 @@ public:
     static CustomerManager* getInstance();
 
     void addCustomer(const QString &name);
-    QList<Customer*> getCustomer() const;
+    QList<Customer*> getCustomers() const;
     Customer* findCustomer(const QString &name) const;
 
 signals:

@@ -155,7 +155,7 @@ void TransactionDialog::populateCustomers()
     mCustomerCombo->clear();
 
     CustomerManager *manager = CustomerManager::getInstance();
-    QList<Customer*> customers = manager->getCustomer();
+    QList<Customer*> customers = manager->getCustomers();
 
     for (Customer *customer : customers) {
         mCustomerCombo->addItem(customer->getName(), QVariant::fromValue(static_cast<void*>(customer)));

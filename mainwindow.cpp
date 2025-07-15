@@ -3,17 +3,18 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), mTransactionView(nullptr), mLogTextEdit(nullptr), mSplitter(nullptr), mTransactionModel(nullptr), mBroadcaster(nullptr)
 {
+    qDebug() << "MainWindow constructor done";
     setupUI();
     setupMenus();
     setupToolBar();
-    setupStatusBar();
-    setupConnections();
+    //setupStatusBar();
+    //setupConnections();
 
     setWindowTitle("Store Management System");
     resize(800,600);
 
     logMessage("App started");
-    updateActions();
+    //updateActions();
 }
 
 MainWindow::~MainWindow()
@@ -181,7 +182,7 @@ void MainWindow::setupMenus()
     mAddCustomerAction = new QAction("&Add Customer", this);
     mAddCustomerAction->setShortcut(QKeySequence("Ctrl+U"));
     mAddCustomerAction->setStatusTip("Add a new customer.");
-    mDataMenu->addAction(mAddItemAction);
+    mDataMenu->addAction(mAddCustomerAction);
 
     mDataMenu->addSeparator();
 
@@ -215,6 +216,7 @@ void MainWindow::setupToolBar()
 {
     mToolBar = addToolBar("Main Toolbar");
 
+    mAddCustomerAction = new QAction("Add customer", this);
     mToolBar->addAction(mAddCustomerAction);
     mToolBar->addAction(mAddItemAction);
     mToolBar->addSeparator();
@@ -233,6 +235,7 @@ void MainWindow::setupStatusBar()
 void MainWindow::setupConnections()
 {
     //menu actions
+    /*
     connect(mAddCustomerAction, &QAction::triggered, this, &MainWindow::onAddCustomer);
     connect(mAddItemAction, &QAction::triggered, this, &MainWindow::onAddItem);
     connect(mCreateTransactionAction, &QAction::triggered, this, &MainWindow::onCreateTransaction);
@@ -253,6 +256,11 @@ void MainWindow::setupConnections()
     ItemManager *itemManager = ItemManager::getInstance();
     connect(itemManager, &ItemManager::itemAdded, this, &MainWindow::updateActions);
     connect(itemManager, &ItemManager::itemsRestored, this, &MainWindow::updateActions);
+
+    qDebug() << "customerManager is" << customerManager;
+    qDebug() << "itemManager is" << itemManager;
+    qDebug() << "transactionManager is" << transactionManager;
+    */
 }
 
 void MainWindow::updateActions()
@@ -260,7 +268,7 @@ void MainWindow::updateActions()
     CustomerManager *customerManager = CustomerManager::getInstance();
     ItemManager *itemManager = ItemManager::getInstance();
 
-    bool hasCustomers = !customerManager->getCustomer().isEmpty();
+    bool hasCustomers = !customerManager->getCustomers().isEmpty();
     bool hasItems = !itemManager->getItems().isEmpty();
 
     mCreateTransactionAction->setEnabled(hasCustomers && hasItems);

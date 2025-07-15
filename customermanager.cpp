@@ -32,7 +32,7 @@ Customer* CustomerManager::findCustomer(const QString &name) const
     return nullptr;
 }
 
-QList<Customer*> CustomerManager::getCustomer() const
+QList<Customer*> CustomerManager::getCustomers() const
 {
     return mCustomer;
 }
