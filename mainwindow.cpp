@@ -26,12 +26,25 @@ MainWindow::~MainWindow()
 
 void MainWindow::onAddCustomer()
 {
-
+    CustomerDialog dialog(this);
+    if (dialog.exec() == QDialog::Accepted) {
+        QString name = dialog.getCustomerName();
+        CustomerManager::getInstance()->addCustomer(name);
+        logMessage(QString("Customer added: %1").arg(name));
+        mStatusBar->showMessage(QString("Customer '%1' added").arg(name), 3000);
+    }
 }
 
 void MainWindow::onAddItem()
 {
-
+    ItemDialog dialog(this);
+    if (dialog.exec() == QDialog::Accepted) {
+        QString name = dialog.getItemName();
+        Itemtype type = dialog.getItemType();
+        ItemManager::getInstance()->addItem(name, type);
+        logMessage(QString("Item added: %1 (%2)").arg(name, type == Itemtype::Book ? "Book" : "Magazine"));
+        mStatusBar->showMessage(QString("Item '%1' added").arg(name), 3000);
+    }
 }
 
 void MainWindow::onCreateTransaction()
