@@ -85,7 +85,69 @@ void TransactionDialog::setupUI()
 {
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
+    //Customer selection
     QGroupBox *customerGroup = new QGroupBox("Customer", this);
+    QVBoxLayout *customerLayout = new QVBoxLayout(customerGroup);
+
+    mCustomerCombo = new QComboBox(this);
+    connect(mCustomerCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &TransactionDialog::onCustomerChanged);
+    customerLayout->addWidget(mCustomerCombo);
+
+    mainLayout->addWidget(customerGroup);
+
+    //Item selection
+    QGroupBox *itemGroup = new QGroupBox("Add items", this);
+    QGridLayout *itemLayout = new QGridLayout(itemGroup);
+
+    itemLayout->addWidget(new QLabel("Item:", this),0,0);
+    mItemCombo = new QComboBox(this);
+    connect(mItemCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &TransactionDialog::onItemSelectionChanged);
+    itemLayout->addWidget(mItemCombo,0,1);
+
+    itemLayout->addWidget(new QLabel("Quantity:",this), 1, 0);
+    mQuantitySpinBox = new QSpinBox(this);
+    mQuantitySpinBox->setMinimum(1);
+    mQuantitySpinBox->setMaximum(999);
+    mQuantitySpinBox->setValue(1);
+    itemLayout->addWidget(mQuantitySpinBox, 1, 1);
+
+    mAddItemButton = new QPushButton("Add Item", this);
+    connect(mAddItemButton, &QPushButton::clicked, this, &TransactionDialog::onAddItemClicked);
+    itemLayout->addWidget(mQuantitySpinBox,1,1);
+
+    mAddItemButton = new QPushButton("Add Item", this);
+    connect(mAddItemButton, &QPushButton::clicked, this, &TransactionDialog::onAddItemClicked);
+    itemLayout->addWidget(mAddItemButton,2,0,1,2);
+
+    mainLayout->addWidget(itemGroup);
+
+    QGroupBox *selectedGroup = new QGroupBox("Selected Items", this);
+    QVBoxLayout *selectedLayout = new QVBoxLayout(selectedGroup);
+
+    mSelectedItemsList = new QListWidget(this);
+    selectedLayout->addWidget(mSelectedItemsList);
+
+    mRemoveItemButton = new QPushButton("Remove Selected", this);
+    connect(mRemoveItemButton, &QPushButton::clicked, this, &TransactionDialog::onRemovedItemClicked);
+    selectedLayout->addWidget(mRemoveItemButton);
+
+    mainLayout->addWidget(selectedGroup);
+
+    QHBoxLayout *buttonLayout = new QHBoxLayout();
+    mOkButton = new QPushButton("Create Transaction", this);
+    mCancelButton = new QPushButton("Cancel", this);
+
+    connect(mOkButton, &QPushButton::clicked, this, &TransactionDialog::accept);
+    connect(mCancelButton, &QPushButton::clicked, this, &QDialog::reject);
+
+    buttonLayout->addWidget(mOkButton);
+    buttonLayout->addWidget(mCancelButton);
+
+    mainLayout->addLayout(buttonLayout);
+
+    populateCustomers();
+    populatedItems();
+    updateButtons();
 }
 
 void TransactionDialog::populateCustomers()
