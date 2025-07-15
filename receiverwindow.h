@@ -2,14 +2,19 @@
 #define RECEIVERWINDOW_H
 
 #include <QMainWindow>
-class QTextEdit;
-class QAction;
-class QMenu;
-class QStatusBar;
+#include <QMenuBar>
+#include <QMenu>
+#include <QStatusBar>
+#include <QTextEdit>
+#include <QAction>
+#include <QVBoxLayout>
+#include <QMessageBox>
+#include <QStatusBar>
+#include <QApplication>
+#include <QDateTime>
+#include "udpreceiver.h"
+
 class UdpReceiver;
-class QVBoxLayout;
-class QApplication;
-class QMessageBox;
 
 class ReceiverWindow : public QMainWindow
 {
@@ -29,12 +34,14 @@ private slots:
 private:
     QTextEdit *mDataTextEdit;
     QMenu *mFileMenu;
+    QMenu *mNetworkMenu;
     QMenu *mHelpMenu;
     QAction *mStartListeningAction;
     QAction *mStopListeningAction;
     QAction *clearDataAction;
     QAction *mExitAction;
     QAction *mAboutAction;
+    QAction *mClearDataAction;
     QStatusBar *mStatusBar;
     UdpReceiver *mReceiver;
 

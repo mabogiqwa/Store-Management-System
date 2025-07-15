@@ -49,47 +49,92 @@ void MainWindow::onAddItem()
 
 void MainWindow::onCreateTransaction()
 {
+    TransactionDialog dialog(this);
+    if (dialog.exec() == QDialog::Accepted) {
+        Customer *customer = dialog.getSelectedCustomer();
+        QList<SelectedItem> selectedItems = dialog.getSelectedItems();
 
+        if (customer && !selectedItems.isEmpty()) {
+            Transaction *transaction = new Transaction(customer, QDateTime::currentDateTime());
+
+            for (const SelectedItem &selectedItem : selectedItems) {
+                transaction->addItem(selectedItem.item, selectedItem.quantity);
+            }
+
+            TransactionManager::getInstance()->addTransaction(transaction);
+            logMessage(QString("Transaction created for customer: %1").arg(customer->getName()));
+            mStatusBar->showMessage("Transaction created", 3000);
+        }
+    }
 }
 
 void MainWindow::onRestoreItems()
 {
+    int ret = QMessageBox::question(this,"Restore Items","Are you sure you want to restore items from backup? This will replace the current item list.", QMessageBox::Yes, QMessageBox::No);
 
+    if (ret == QMessageBox::Yes) {
+        ItemManager::getInstance()->restoreFromBackup();
+        logMessage("Items restored from backup");
+        mStatusBar->showMessage("Items restored from backup", 3000);
+        //mBroadcaster = new UdpBroadcaster(this);
+        //connect(mBroadcaster, &UdpBroadcaster::broadcastSent, this, &MainWindow::onBroadcastSent);
+    }
 }
 
 void MainWindow::onStartBroadcast()
 {
+    if (mBroadcaster) {
+        mBroadcaster = new UdpBroadcaster(this);
+        connect(mBroadcaster, &UdpBroadcaster::broadcastSent, this, &MainWindow::onBroadcastSent);
+    }
 
+    mBroadcaster->startBroadcasting();
+    mStartBroadcastAction->setEnabled(false);
+    mStopBroadcastAction->setEnabled(true);
+
+    logMessage("Broadcasting started");
+    mStatusBar->showMessage("Broadcasting started");
 }
 
 void MainWindow::onStopBroadcast()
 {
+    if (mBroadcaster) {
+        mBroadcaster->stopBroadcasting();
+    }
 
+    mStartBroadcastAction->setEnabled(true);
+    mStopBroadcastAction->setEnabled(false);
+
+    logMessage("Broadcasting stopped");
+    mStatusBar->showMessage("Broadcasting stopped", 3000);
 }
 
 void MainWindow::onAbout()
 {
-
+  //Skip
 }
 
 void MainWindow::onHelp()
 {
-
+  //Skip
 }
 
 void MainWindow::onExit()
 {
-
+    close();
 }
 
 void MainWindow::onTransactionAdded()
 {
-
+    mTransactionModel->refreshModel();
+    //mTransactionModel->expandAll();
+    updateActions();
 }
 
 void MainWindow::onBroadcastSent(const QString &data)
 {
-
+    Q_UNUSED(data);
+    logMessage("Transaction data broadcast sent");
 }
 
 void MainWindow::setupUI()
@@ -212,10 +257,17 @@ void MainWindow::setupConnections()
 
 void MainWindow::updateActions()
 {
+    CustomerManager *customerManager = CustomerManager::getInstance();
+    ItemManager *itemManager = ItemManager::getInstance();
 
+    bool hasCustomers = !customerManager->getCustomer().isEmpty();
+    bool hasItems = !itemManager->getItems().isEmpty();
+
+    mCreateTransactionAction->setEnabled(hasCustomers && hasItems);
 }
 
 void MainWindow::logMessage(const QString &message)
 {
-
+    QString timeStamp = QDateTime::currentDateTime().toString("hh:mm:ss");
+    mLogTextEdit->append(QString("[%1] %2").arg(timeStamp, message));
 }

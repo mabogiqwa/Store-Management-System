@@ -412,9 +412,21 @@
 			null
 		],
 		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/receiverwindow.h",
+			"MU",
+			"EWIEGA46WW/moc_receiverwindow.cpp",
+			null
+		],
+		[
 			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/transaction.h",
 			"MU",
 			"EWIEGA46WW/moc_transaction.cpp",
+			null
+		],
+		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactiondialog.h",
+			"MU",
+			"EWIEGA46WW/moc_transactiondialog.cpp",
 			null
 		],
 		[
@@ -433,6 +445,12 @@
 			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/udpbroadcaster.h",
 			"MU",
 			"EWIEGA46WW/moc_udpbroadcaster.cpp",
+			null
+		],
+		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/udpreceiver.h",
+			"MU",
+			"EWIEGA46WW/moc_udpreceiver.cpp",
 			null
 		]
 	],
@@ -550,7 +568,17 @@
 			null
 		],
 		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/receiverwindow.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/transaction.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactiondialog.cpp",
 			"MU",
 			null
 		],
@@ -566,6 +594,11 @@
 		],
 		[
 			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/udpbroadcaster.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/realm/Documents/Assignment2-Programming-Assignment/udpreceiver.cpp",
 			"MU",
 			null
 		]

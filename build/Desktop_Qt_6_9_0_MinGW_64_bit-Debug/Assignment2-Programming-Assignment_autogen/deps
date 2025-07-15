@@ -207,6 +207,7 @@ Assignment2-Programming-Assignment_autogen/timestamp: \
 	C:/Qt/6.9.0/mingw_64/include/QtWidgets/QLineEdit \
 	C:/Qt/6.9.0/mingw_64/include/QtWidgets/QListWidget \
 	C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMainWindow \
+	C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMenu \
 	C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMenuBar \
 	C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMessageBox \
 	C:/Qt/6.9.0/mingw_64/include/QtWidgets/QPushButton \
@@ -735,8 +736,11 @@ Assignment2-Programming-Assignment_autogen/timestamp: \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/main.cpp \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/mainwindow.cpp \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/mainwindow.h \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/receiverwindow.cpp \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/receiverwindow.h \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transaction.cpp \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transaction.h \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactiondialog.cpp \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactiondialog.h \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmanager.cpp \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmanager.h \
@@ -744,4 +748,6 @@ Assignment2-Programming-Assignment_autogen/timestamp: \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmodel.h \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/udpbroadcaster.cpp \
 	C:/Users/realm/Documents/Assignment2-Programming-Assignment/udpbroadcaster.h \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/udpreceiver.cpp \
+	C:/Users/realm/Documents/Assignment2-Programming-Assignment/udpreceiver.h \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe
