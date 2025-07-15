@@ -16,7 +16,13 @@ MainWindow::MainWindow(QWidget *parent)
     updateActions();
 }
 
-MainWindow::~MainWindow() {}
+MainWindow::~MainWindow()
+{
+    if (mBroadcaster) {
+        mBroadcaster->stopBroadcasting();
+        delete mBroadcaster;
+    }
+}
 
 void MainWindow::onAddCustomer()
 {
@@ -79,6 +85,28 @@ void MainWindow::setupUI()
     setCentralWidget(centralWidget);
 
     QVBoxLayout *mainLayout = new QVBoxLayout(centralWidget);
+
+    mSplitter = new QSplitter(Qt::Vertical, this);
+
+    //Transaction view
+    mTransactionView = new QTreeView(this);
+    mTransactionModel = new TransactionModel(this);
+    mTransactionView->setModel(mTransactionModel);
+    mTransactionView->setRootIsDecorated(true);
+    mTransactionView->setAlternatingRowColors(true);
+    mTransactionView->header()->setStretchLastSection(true);
+    mTransactionView->expandAll();
+
+    mSplitter->addWidget(mTransactionView);
+
+    mLogTextEdit = new QTextEdit(this);
+    mLogTextEdit->setReadOnly(true);
+    mLogTextEdit->setMaximumHeight(150);
+    mLogTextEdit->setPlaceholderText("Application log messages appear here");
+
+    mSplitter->setSizes({400,150});
+
+    mainLayout->addWidget(mSplitter);
 }
 
 void MainWindow::setupMenus()

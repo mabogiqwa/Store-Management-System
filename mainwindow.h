@@ -8,12 +8,14 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QMenuBar>
+#include <QToolBar>
 #include <QStatusBar>
 #include <QAction>
 #include <QMessageBox>
 #include <QDateTime>
 #include <QHeaderView>
 #include <QApplication>
+#include "customer.h"
 #include "customermanager.h"
 #include "customerdialog.h"
 #include "item.h"
