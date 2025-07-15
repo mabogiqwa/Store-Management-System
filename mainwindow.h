@@ -2,6 +2,28 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTreeView>
+#include <QTextEdit>
+#include <QSplitter>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QMenuBar>
+#include <QStatusBar>
+#include <QAction>
+#include <QMessageBox>
+#include <QDateTime>
+#include <QHeaderView>
+#include <QApplication>
+#include "customermanager.h"
+#include "customerdialog.h"
+#include "item.h"
+#include "itemdialog.h"
+#include "itemmanager.h"
+#include "transaction.h"
+#include "transactiondialog.h"
+#include "transactionmanager.h"
+#include "transactionmodel.h"
+#include "udpbroadcaster.h"
 
 class MainWindow : public QMainWindow
 {

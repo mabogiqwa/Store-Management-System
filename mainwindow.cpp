@@ -76,6 +76,9 @@ void MainWindow::onBroadcastSent(const QString &data)
 void MainWindow::setupUI()
 {
     QWidget *centralWidget = new QWidget(this);
+    setCentralWidget(centralWidget);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout(centralWidget);
 }
 
 void MainWindow::setupMenus()
