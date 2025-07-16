@@ -5,10 +5,20 @@ MainWindow::MainWindow(QWidget *parent)
 {
     qDebug() << "MainWindow constructor done";
     setupUI();
-    //setupMenus();
-    //setupToolBar();
-    //setupStatusBar();
-    //setupConnections();
+    setupMenus();
+    setupToolBar();
+    setupStatusBar();
+    setupConnections();
+
+    mAddCustomerAction = nullptr;
+    mAddItemAction = nullptr;
+    mCreateTransactionAction = nullptr;
+    mRestoreItemsAction = nullptr;
+    mStartBroadcastAction = nullptr;
+    mStopBroadcastAction = nullptr;
+    mExitAction = nullptr;
+    mAboutAction = nullptr;
+    mHelpAction = nullptr;
 
     setWindowTitle("Store Management System");
     resize(800,600);
@@ -112,7 +122,12 @@ void MainWindow::onStopBroadcast()
 
 void MainWindow::onAbout()
 {
-  //Skip
+    QMessageBox::about(this, "About Store Management System",
+                       "Store Management System v1.0\n\n"
+                       "A Qt application for managing store transactions.\n"
+                       "Built with Qt6 and C++.\n\n"
+                       "COS3711 Assignment 2\n"
+                       "© 2025");
 }
 
 void MainWindow::onHelp()
@@ -234,32 +249,55 @@ void MainWindow::setupStatusBar()
 void MainWindow::setupConnections()
 {
     //menu actions
-    /*
-    connect(mAddCustomerAction, &QAction::triggered, this, &MainWindow::onAddCustomer);
-    connect(mAddItemAction, &QAction::triggered, this, &MainWindow::onAddItem);
-    connect(mCreateTransactionAction, &QAction::triggered, this, &MainWindow::onCreateTransaction);
-    connect(mRestoreItemsAction, &QAction::triggered, this, &MainWindow::onRestoreItems);
-    connect(mStartBroadcastAction, &QAction::triggered, this, &MainWindow::onStartBroadcast);
-    connect(mStopBroadcastAction, &QAction::triggered, this, &MainWindow::onStopBroadcast);
-    connect(mExitAction, &QAction::triggered, this, &MainWindow::onExit);
-    connect(mAboutAction, &QAction::triggered, this, &MainWindow::onAbout);
-    connect(mHelpAction, &QAction::triggered, this, &MainWindow::onHelp);
+    if (mAddCustomerAction) {
+        connect(mAddCustomerAction, &QAction::triggered, this, &MainWindow::onAddCustomer);
+    }
+    if (mAddItemAction) {
+        connect(mAddItemAction, &QAction::triggered, this, &MainWindow::onAddItem);
+    }
+    if (mCreateTransactionAction) {
+        connect(mCreateTransactionAction, &QAction::triggered, this, &MainWindow::onCreateTransaction);
+    }
+    if (mRestoreItemsAction) {
+        connect(mRestoreItemsAction, &QAction::triggered, this, &MainWindow::onRestoreItems);
+    }
+/*
+    if (mStartBroadcastAction) {
+        connect(mStartBroadcastAction, &QAction::triggered, this, &MainWindow::onStartBroadcast);
+    }
+    if (mStopBroadcastAction) {
+        connect(mStopBroadcastAction, &QAction::triggered, this, &MainWindow::onStopBroadcast);
+    }
+*/
+    if (mExitAction) {
+        connect(mExitAction, &QAction::triggered, this, &MainWindow::onExit);
+    }
+/*
+    if (mAboutAction) {
+        connect(mAboutAction, &QAction::triggered, this, &MainWindow::onAbout);
+    } //The problem could be here
 
+    if (mHelpAction) {
+        connect(mHelpAction, &QAction::triggered, this, &MainWindow::onHelp);
+    } //The problem is also here
+*/
     //Manager connections
+
     TransactionManager *transactionManager = TransactionManager::getInstance();
-    connect(transactionManager, &TransactionManager::transactionAdded, this, &MainWindow::onTransactionAdded);
+    if (transactionManager) {
+        connect(transactionManager, &TransactionManager::transactionAdded, this, &MainWindow::onTransactionAdded);
+    }
 
     CustomerManager *customerManager = CustomerManager::getInstance();
-    connect(customerManager, &CustomerManager::customerAdded, this, &MainWindow::updateActions);
+    if (customerManager) {
+        connect(customerManager, &CustomerManager::customerAdded, this, &MainWindow::updateActions);
+    }
 
     ItemManager *itemManager = ItemManager::getInstance();
-    connect(itemManager, &ItemManager::itemAdded, this, &MainWindow::updateActions);
-    connect(itemManager, &ItemManager::itemsRestored, this, &MainWindow::updateActions);
-
-    qDebug() << "customerManager is" << customerManager;
-    qDebug() << "itemManager is" << itemManager;
-    qDebug() << "transactionManager is" << transactionManager;
-    */
+    if (itemManager) {
+        connect(itemManager, &ItemManager::itemAdded, this, &MainWindow::updateActions);
+        connect(itemManager, &ItemManager::itemsRestored, this, &MainWindow::updateActions);
+    }
 }
 
 void MainWindow::updateActions()
