@@ -1,4 +1,5 @@
 #include "customermanager.h"
+#include <QDebug>
 
 CustomerManager* CustomerManager::sInstance = nullptr;
 
@@ -15,6 +16,7 @@ CustomerManager::CustomerManager(QObject *parent)
 {}
 
 void CustomerManager::addCustomer(const QString &name) {
+    qDebug() << "I executed";
     if (!findCustomer(name)) {
         Customer *customer = new Customer(name);
         mCustomer.append(customer);

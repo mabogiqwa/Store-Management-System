@@ -40,8 +40,17 @@ void MainWindow::onAddCustomer()
     CustomerDialog dialog(this);
     if (dialog.exec() == QDialog::Accepted) {
         QString name = dialog.getCustomerName();
-        CustomerManager::getInstance()->addCustomer(name);
-        logMessage(QString("Customer added: %1").arg(name));
+        CustomerManager *manager = CustomerManager::getInstance();
+        if (!manager) {
+            QMessageBox::critical(this, "Error", "CustomerManager::getInstance() returned nullptr");
+            return;
+        }
+        try {
+            manager->addCustomer(name);
+        } catch (...) {
+            QMessageBox::critical(this, "Error", "Exception in addCustomer()");
+        }
+        //logMessage(QString("Customer added: %1").arg(name));
         mStatusBar->showMessage(QString("Customer '%1' added").arg(name), 3000);
     }
 }
@@ -89,8 +98,20 @@ void MainWindow::onCreateTransaction()
                 transaction->addItem(selectedItem.item, selectedItem.quantity);
             }
 
-            TransactionManager::getInstance()->addTransaction(transaction);
-            logMessage(QString("Transaction created for customer: %1").arg(customer->getName()));
+            qDebug() << "Reached this point";
+            TransactionManager *manager = TransactionManager::getInstance();
+            if (!manager) {
+                QMessageBox::critical(this, "Error", "TransactionManager::getInstance() returned nullptr");
+                return;
+            }
+            try {
+                manager->addTransaction(transaction);
+                //mStatusBar->showMessage(QString("Item '%1' added").arg(name), 3000);
+                qDebug() << "Transaction successful";
+            } catch (...) {
+                QMessageBox::critical(this, "Error", "Exception in addTransaction()");
+            }
+            //logMessage(QString("Transaction created for customer: %1").arg(customer->getName()));
             mStatusBar->showMessage("Transaction created", 3000);
         }
     }
@@ -327,17 +348,15 @@ void MainWindow::setupConnections()
 
 void MainWindow::updateActions()
 {
-    qDebug() << "Did you execute this?";
     CustomerManager *customerManager = CustomerManager::getInstance();
     ItemManager *itemManager = ItemManager::getInstance();
 
     if (!customerManager || !itemManager) {
-        qDebug() << "CustomerManager or ItemManager instance is null";
         return;
     }
     bool hasCustomers = !customerManager->getCustomers().isEmpty();
     bool hasItems = !itemManager->getItems().isEmpty();
-    qDebug() << "Do you get to this point?";
+
     if (mCreateTransactionAction) {
         mCreateTransactionAction->setEnabled(hasCustomers && hasItems);
     }
