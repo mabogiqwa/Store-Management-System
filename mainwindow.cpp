@@ -49,11 +49,28 @@ void MainWindow::onAddCustomer()
 void MainWindow::onAddItem()
 {
     ItemDialog dialog(this);
+
+    qDebug() << "Showing dialog..";
     if (dialog.exec() == QDialog::Accepted) {
         QString name = dialog.getItemName();
         Itemtype type = dialog.getItemType();
-        ItemManager::getInstance()->addItem(name, type);
-        logMessage(QString("Item added: %1 (%2)").arg(name, type == Itemtype::Book ? "Book" : "Magazine"));
+        qDebug() << "The name is: " << name << ". The type is: " << (int)type;
+        //ItemManager::getInstance()->addItem(name, type);
+        ItemManager *manager = ItemManager::getInstance();
+        if (!manager) {
+            QMessageBox::critical(this, "Error", "ItemManager::getInstance() returned nullptr");
+            return;
+        }
+        qDebug() << "I reach this point";
+        try {
+            qDebug() << "About to add item";
+            manager->addItem(name, type);
+            //mStatusBar->showMessage(QString("Item '%1' added").arg(name), 3000);
+            qDebug() << "Item added successfully";
+        } catch (...) {
+            QMessageBox::critical(this, "Error", "Exception in addItem()");
+        }
+        //logMessage(QString("Item added: %1 (%2)").arg(name, type == Itemtype::Book ? "Book" : "Magazine"));
         mStatusBar->showMessage(QString("Item '%1' added").arg(name), 3000);
     }
 }
