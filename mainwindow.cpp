@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     resize(800,600);
 
     //logMessage("App started");
-    //updateActions();
+    updateActions();
 }
 
 MainWindow::~MainWindow()
@@ -59,22 +59,18 @@ void MainWindow::onAddItem()
 {
     ItemDialog dialog(this);
 
-    qDebug() << "Showing dialog..";
     if (dialog.exec() == QDialog::Accepted) {
         QString name = dialog.getItemName();
         Itemtype type = dialog.getItemType();
-        qDebug() << "The name is: " << name << ". The type is: " << (int)type;
-        //ItemManager::getInstance()->addItem(name, type);
+
         ItemManager *manager = ItemManager::getInstance();
         if (!manager) {
             QMessageBox::critical(this, "Error", "ItemManager::getInstance() returned nullptr");
             return;
         }
-        qDebug() << "I reach this point";
+
         try {
-            qDebug() << "About to add item";
             manager->addItem(name, type);
-            //mStatusBar->showMessage(QString("Item '%1' added").arg(name), 3000);
             qDebug() << "Item added successfully";
         } catch (...) {
             QMessageBox::critical(this, "Error", "Exception in addItem()");
@@ -98,7 +94,6 @@ void MainWindow::onCreateTransaction()
                 transaction->addItem(selectedItem.item, selectedItem.quantity);
             }
 
-            qDebug() << "Reached this point";
             TransactionManager *manager = TransactionManager::getInstance();
             if (!manager) {
                 QMessageBox::critical(this, "Error", "TransactionManager::getInstance() returned nullptr");
@@ -107,7 +102,6 @@ void MainWindow::onCreateTransaction()
             try {
                 manager->addTransaction(transaction);
                 //mStatusBar->showMessage(QString("Item '%1' added").arg(name), 3000);
-                qDebug() << "Transaction successful";
             } catch (...) {
                 QMessageBox::critical(this, "Error", "Exception in addTransaction()");
             }
@@ -125,8 +119,8 @@ void MainWindow::onRestoreItems()
         ItemManager::getInstance()->restoreFromBackup();
         logMessage("Items restored from backup");
         mStatusBar->showMessage("Items restored from backup", 3000);
-        //mBroadcaster = new UdpBroadcaster(this);
-        //connect(mBroadcaster, &UdpBroadcaster::broadcastSent, this, &MainWindow::onBroadcastSent);
+        mBroadcaster = new UdpBroadcaster(this);
+        connect(mBroadcaster, &UdpBroadcaster::broadcastSent, this, &MainWindow::onBroadcastSent);
     }
 }
 
@@ -276,8 +270,6 @@ void MainWindow::setupToolBar()
 {
     mToolBar = addToolBar("Main Toolbar");
 
-    //mAddCustomerAction = new QAction("Add customer", this);
-    //mToolBar->addAction(mAddCustomerAction);
     mAddItemAction = new QAction("Add item", this);
     mToolBar->addAction(mAddItemAction);
     mToolBar->addSeparator();
