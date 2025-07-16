@@ -327,13 +327,21 @@ void MainWindow::setupConnections()
 
 void MainWindow::updateActions()
 {
+    qDebug() << "Did you execute this?";
     CustomerManager *customerManager = CustomerManager::getInstance();
     ItemManager *itemManager = ItemManager::getInstance();
 
+    if (!customerManager || !itemManager) {
+        qDebug() << "CustomerManager or ItemManager instance is null";
+        return;
+    }
     bool hasCustomers = !customerManager->getCustomers().isEmpty();
     bool hasItems = !itemManager->getItems().isEmpty();
+    qDebug() << "Do you get to this point?";
+    if (mCreateTransactionAction) {
+        mCreateTransactionAction->setEnabled(hasCustomers && hasItems);
+    }
 
-    mCreateTransactionAction->setEnabled(hasCustomers && hasItems);
 }
 
 void MainWindow::logMessage(const QString &message)

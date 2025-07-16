@@ -18,15 +18,11 @@ ItemManager* ItemManager::getInstance() {
 
 void ItemManager::addItem(const QString &name, Itemtype type)
 {
-    qDebug() << "Entering addItem. The name is: " << name << ". The type is: " << (int)type;
     if (!findItem(name)) {
         Item *item = new Item(name, type);
-        qDebug() << "Created a new item.";
         mItems.append(item);
-        qDebug() << "Appended item to list";
         createBackup();
-        qDebug() << "Created backup";
-        //emit itemAdded(item);
+        emit itemAdded(item);
         qDebug() << "Did you emit this?";
     }
 }
