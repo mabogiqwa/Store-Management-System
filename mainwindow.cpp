@@ -220,14 +220,26 @@ void MainWindow::setupMenus()
     mNetworkMenu->addAction(mStopBroadcastAction);
 
     //Add help menu later
+    mHelpMenu = menuBar()->addMenu("&Help");
+
+    mHelpAction = new QAction("&Help", this);
+    mHelpAction->setShortcut(QKeySequence::HelpContents);
+    mHelpAction->setStatusTip("Show help information");
+    mHelpMenu->addAction(mHelpAction);
+
+    mHelpMenu->addSeparator();
+
+    mAboutAction = new QAction("&About", this);
+    mAboutAction->setStatusTip("Show info about application");
+    mHelpMenu->addAction(mAboutAction);
 }
 
 void MainWindow::setupToolBar()
 {
     mToolBar = addToolBar("Main Toolbar");
 
-    mAddCustomerAction = new QAction("Add customer", this);
-    mToolBar->addAction(mAddCustomerAction);
+    //mAddCustomerAction = new QAction("Add customer", this);
+    //mToolBar->addAction(mAddCustomerAction);
     mAddItemAction = new QAction("Add item", this);
     mToolBar->addAction(mAddItemAction);
     mToolBar->addSeparator();
@@ -261,28 +273,24 @@ void MainWindow::setupConnections()
     if (mRestoreItemsAction) {
         connect(mRestoreItemsAction, &QAction::triggered, this, &MainWindow::onRestoreItems);
     }
-/*
     if (mStartBroadcastAction) {
         connect(mStartBroadcastAction, &QAction::triggered, this, &MainWindow::onStartBroadcast);
     }
     if (mStopBroadcastAction) {
         connect(mStopBroadcastAction, &QAction::triggered, this, &MainWindow::onStopBroadcast);
     }
-*/
     if (mExitAction) {
         connect(mExitAction, &QAction::triggered, this, &MainWindow::onExit);
     }
-/*
     if (mAboutAction) {
         connect(mAboutAction, &QAction::triggered, this, &MainWindow::onAbout);
-    } //The problem could be here
-
+    }
+/*
     if (mHelpAction) {
         connect(mHelpAction, &QAction::triggered, this, &MainWindow::onHelp);
-    } //The problem is also here
+    } //Not necessary for now
 */
     //Manager connections
-
     TransactionManager *transactionManager = TransactionManager::getInstance();
     if (transactionManager) {
         connect(transactionManager, &TransactionManager::transactionAdded, this, &MainWindow::onTransactionAdded);

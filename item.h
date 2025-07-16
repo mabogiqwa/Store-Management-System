@@ -5,8 +5,8 @@
 //#include <ItemType>
 
 enum class Itemtype {
-    Book,
-    Magazine
+    Book = 0,
+    Magazine = 1
 };
 
 class Item
