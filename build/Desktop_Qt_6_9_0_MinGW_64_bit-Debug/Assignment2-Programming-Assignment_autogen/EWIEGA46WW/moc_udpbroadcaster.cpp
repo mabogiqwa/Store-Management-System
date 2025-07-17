@@ -42,6 +42,7 @@ template <> constexpr inline auto UdpBroadcaster::qt_create_metaobjectdata<qt_me
         "broadcastSent",
         "",
         "data",
+        "dataRequested",
         "broadcastData"
     };
 
@@ -50,8 +51,10 @@ template <> constexpr inline auto UdpBroadcaster::qt_create_metaobjectdata<qt_me
         QtMocHelpers::SignalData<void(const QString &)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 3 },
         }}),
+        // Signal 'dataRequested'
+        QtMocHelpers::SignalData<void()>(4, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'broadcastData'
-        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -76,12 +79,15 @@ void UdpBroadcaster::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->broadcastSent((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 1: _t->broadcastData(); break;
+        case 1: _t->dataRequested(); break;
+        case 2: _t->broadcastData(); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
         if (QtMocHelpers::indexOfMethod<void (UdpBroadcaster::*)(const QString & )>(_a, &UdpBroadcaster::broadcastSent, 0))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (UdpBroadcaster::*)()>(_a, &UdpBroadcaster::dataRequested, 1))
             return;
     }
 }
@@ -105,14 +111,14 @@ int UdpBroadcaster::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }
@@ -121,5 +127,11 @@ int UdpBroadcaster::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void UdpBroadcaster::broadcastSent(const QString & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
+}
+
+// SIGNAL 1
+void UdpBroadcaster::dataRequested()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 QT_WARNING_POP

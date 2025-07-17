@@ -21,6 +21,7 @@ public:
     void stopBroadcasting();
 signals:
     void broadcastSent(const QString &data);
+    void dataRequested();
 protected:
     void run() override;
 

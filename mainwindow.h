@@ -82,6 +82,8 @@ private:
     //Network
     UdpBroadcaster *mBroadcaster;
 
+    QString generateXMLData();
+
     void setupUI();
     void setupMenus();
     void setupToolBar();

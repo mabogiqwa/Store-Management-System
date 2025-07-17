@@ -172,16 +172,16 @@ void MainWindow::onAbout()
 void MainWindow::onHelp()
 {
     QMessageBox::information(this, "Help",
-                            "Store Management System Help\n\n"
-                            "1. Add customers using Data -> Add Customer\n"
-                            "2. Add items using Data -> Add Item\n"
-                            "3. Create transactions using Data -> Create Transaction\n"
-                            "4. Start broadcasting using Network -> Start Broadcasting\n"
-                            "5. Use the UDP Receiver application to receive broadcasts\n\n"
-                            "Keyboard Shortcuts:\n"
-                            "Ctrl+U - Add Customers\n"
-                            "Ctrl+I - Add Item\n"
-                            "Ctrl+T - Create Transaction\n"
+                             "Store Management System Help\n\n"
+                             "1. Add customers using Data -> Add Customer\n"
+                             "2. Add items using Data -> Add Item\n"
+                             "3. Create transactions using Data -> Create Transaction\n"
+                             "4. Start broadcasting using Network -> Start Broadcasting\n"
+                             "5. Use the UDP Receiver application to receive broadcasts\n\n"
+                             "Keyboard Shortcuts:\n"
+                             "Ctrl+U - Add Customers\n"
+                             "Ctrl+I - Add Item\n"
+                             "Ctrl+T - Create Transaction\n"
                              "Ctrl+Q - Exit");
 }
 
