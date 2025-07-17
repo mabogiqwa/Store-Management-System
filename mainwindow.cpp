@@ -165,7 +165,18 @@ void MainWindow::onAbout()
 
 void MainWindow::onHelp()
 {
-  //Skip
+    QMessageBox::information(this, "Help",
+                            "Store Management System Help\n\n"
+                            "1. Add customers using Data -> Add Customer\n"
+                            "2. Add items using Data -> Add Item\n"
+                            "3. Create transactions using Data -> Create Transaction\n"
+                            "4. Start broadcasting using Network -> Start Broadcasting\n"
+                            "5. Use the UDP Receiver application to receive broadcasts\n\n"
+                            "Keyboard Shortcuts:\n"
+                            "Ctrl+U - Add Customers\n"
+                            "Ctrl+I - Add Item\n"
+                            "Ctrl+T - Create Transaction\n"
+                             "Ctrl+Q - Exit");
 }
 
 void MainWindow::onExit()
@@ -258,14 +269,12 @@ void MainWindow::setupMenus()
     //Add help menu later
     mHelpMenu = menuBar()->addMenu("&Help");
 
-    /*
     mHelpAction = new QAction("&Help", this);
     mHelpAction->setShortcut(QKeySequence::HelpContents);
     mHelpAction->setStatusTip("Show help information");
     mHelpMenu->addAction(mHelpAction);
-*/
 
-    //mHelpMenu->addSeparator();
+    mHelpMenu->addSeparator();
 
     mAboutAction = new QAction("&About", this);
     mAboutAction->setStatusTip("Show info about application");
@@ -321,11 +330,10 @@ void MainWindow::setupConnections()
     if (mAboutAction) {
         connect(mAboutAction, &QAction::triggered, this, &MainWindow::onAbout);
     }
-/*
     if (mHelpAction) {
         connect(mHelpAction, &QAction::triggered, this, &MainWindow::onHelp);
-    } //Not necessary for now
-*/
+    }
+
     //Manager connections
     TransactionManager *transactionManager = TransactionManager::getInstance();
     if (transactionManager) {
