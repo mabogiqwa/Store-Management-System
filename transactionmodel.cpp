@@ -20,12 +20,23 @@ QModelIndex TransactionModel::index(int row, int column, const QModelIndex &pare
         if (row < mCustomerNodes.size()) {
             return createIndex(row, column, nullptr);
         }
-    } else {
+    } else if (!parent.parent().isValid()) {
         int customerIndex = parent.row();
         if (customerIndex < mCustomerNodes.size()) {
             const CustomerNode &node = mCustomerNodes[customerIndex];
             if (row < node.transactions.size()) {
                 return createIndex(row, column, node.transactions[row]);
+            }
+        }
+    } else {
+        Transaction *transaction = static_cast<Transaction*>(parent.internalPointer());
+        if (transaction) {
+            const QList<PurchaseItem> &items = transaction->getItems();
+            if (row < items.size()) {
+                void *itemPtr = reinterpret_cast<void*>(
+                    reinterpret_cast<uintptr_t>(transaction) + row + 1
+                );
+                return createIndex(row, column, itemPtr);
             }
         }
     }
