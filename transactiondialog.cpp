@@ -3,7 +3,7 @@
 TransactionDialog::TransactionDialog(QWidget *parent)
 {
     setupUI();
-    setWindowTitle("Create Transaction");
+    setWindowTitle("Shop");
     setModal(true);
     resize(500,400);
 }
@@ -111,9 +111,9 @@ void TransactionDialog::setupUI()
     mQuantitySpinBox->setValue(1);
     itemLayout->addWidget(mQuantitySpinBox, 1, 1);
 
-    mAddItemButton = new QPushButton("Add Item", this);
-    connect(mAddItemButton, &QPushButton::clicked, this, &TransactionDialog::onAddItemClicked);
-    itemLayout->addWidget(mQuantitySpinBox,1,1);
+    //mAddItemButton = new QPushButton("Add Item", this);
+    //connect(mAddItemButton, &QPushButton::clicked, this, &TransactionDialog::onAddItemClicked);
+    //itemLayout->addWidget(mQuantitySpinBox,1,1);
 
     mAddItemButton = new QPushButton("Add Item", this);
     connect(mAddItemButton, &QPushButton::clicked, this, &TransactionDialog::onAddItemClicked);

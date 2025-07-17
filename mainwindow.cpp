@@ -126,6 +126,7 @@ void MainWindow::onRestoreItems()
 
 void MainWindow::onStartBroadcast()
 {
+    qDebug() << "onStartBroadcast() executed.";
     if (mBroadcaster) {
         mBroadcaster = new UdpBroadcaster(this);
         connect(mBroadcaster, &UdpBroadcaster::broadcastSent, this, &MainWindow::onBroadcastSent);

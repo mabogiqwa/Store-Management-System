@@ -3,7 +3,7 @@
 ItemDialog::ItemDialog(QWidget *parent) : QDialog(parent)
 {
     setupUI();
-    setWindowTitle("Add Item");
+    setWindowTitle("Shop");
     setModal(true);
     resize(300,140);
 }
