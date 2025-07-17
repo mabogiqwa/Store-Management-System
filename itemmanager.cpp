@@ -23,7 +23,7 @@ void ItemManager::addItem(const QString &name, Itemtype type)
         mItems.append(item);
         createBackup();
         emit itemAdded(item);
-        qDebug() << "Did you emit this?";
+        //qDebug() << "Did you emit this?";
     }
 }
 

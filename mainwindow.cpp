@@ -3,7 +3,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), mTransactionView(nullptr), mLogTextEdit(nullptr), mSplitter(nullptr), mTransactionModel(nullptr), mBroadcaster(nullptr)
 {
-    qDebug() << "MainWindow constructor done";
+    //qDebug() << "MainWindow constructor done";
     setupUI();
     setupMenus();
     setupToolBar();
@@ -71,7 +71,7 @@ void MainWindow::onAddItem()
 
         try {
             manager->addItem(name, type);
-            qDebug() << "Item added successfully";
+            //qDebug() << "Item added successfully";
         } catch (...) {
             QMessageBox::critical(this, "Error", "Exception in addItem()");
         }
@@ -229,12 +229,14 @@ void MainWindow::setupMenus()
 
     mDataMenu->addSeparator();
 
+    /*
     mCreateTransactionAction = new QAction("Create &Transaction", this);
     mCreateTransactionAction->setShortcut(QKeySequence("Ctrl+T"));
     mCreateTransactionAction->setStatusTip("Create a new transaction");
     mDataMenu->addAction(mCreateTransactionAction);
+    */
 
-    mDataMenu->addSeparator();
+    //mDataMenu->addSeparator();
 
     mRestoreItemsAction = new QAction("&Restore Items", this);
     mRestoreItemsAction->setStatusTip("Restore items from backup");
@@ -255,12 +257,14 @@ void MainWindow::setupMenus()
     //Add help menu later
     mHelpMenu = menuBar()->addMenu("&Help");
 
+    /*
     mHelpAction = new QAction("&Help", this);
     mHelpAction->setShortcut(QKeySequence::HelpContents);
     mHelpAction->setStatusTip("Show help information");
     mHelpMenu->addAction(mHelpAction);
+*/
 
-    mHelpMenu->addSeparator();
+    //mHelpMenu->addSeparator();
 
     mAboutAction = new QAction("&About", this);
     mAboutAction->setStatusTip("Show info about application");
