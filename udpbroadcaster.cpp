@@ -1,4 +1,5 @@
 #include "udpbroadcaster.h"
+#include <QDebug>
 
 UdpBroadcaster::UdpBroadcaster(QObject *parent) : QThread(parent), mSocket(nullptr), mTimer(nullptr), mBroadcasting(false)
 {
@@ -15,16 +16,21 @@ UdpBroadcaster::~UdpBroadcaster() {
 
 void UdpBroadcaster::startBroadcasting()
 {
+    qDebug() << "startBroadcasting() was executed";
     stopBroadcasting();
+
     if (isRunning()) {
         quit();
         wait();
     }
+    qDebug() << "Finished executing startBroadcasting()";
 }
 
 void UdpBroadcaster::stopBroadcasting()
 {
-    if (!mBroadcasting) {
+    qDebug() << "stopBroadcasting() was called";
+    if (mBroadcasting) {
+        qDebug() << "mBroadcasting is not nullptr";
         mBroadcasting = true;
         start();
     }

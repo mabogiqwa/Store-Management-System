@@ -114,28 +114,34 @@ void MainWindow::onCreateTransaction()
 void MainWindow::onRestoreItems()
 {
     int ret = QMessageBox::question(this,"Restore Items","Are you sure you want to restore items from backup? This will replace the current item list.", QMessageBox::Yes, QMessageBox::No);
-
+    qDebug() << "the question was asked";
     if (ret == QMessageBox::Yes) {
         ItemManager::getInstance()->restoreFromBackup();
-        logMessage("Items restored from backup");
+        //logMessage("Items restored from backup");
         mStatusBar->showMessage("Items restored from backup", 3000);
-        mBroadcaster = new UdpBroadcaster(this);
-        connect(mBroadcaster, &UdpBroadcaster::broadcastSent, this, &MainWindow::onBroadcastSent);
+        //mBroadcaster = new UdpBroadcaster(this);
+
+        if (!mBroadcaster) {
+            mBroadcaster = new UdpBroadcaster(this);
+            connect(mBroadcaster, &UdpBroadcaster::broadcastSent, this, &MainWindow::onBroadcastSent);
+        }
+
     }
 }
 
 void MainWindow::onStartBroadcast()
 {
     qDebug() << "onStartBroadcast() executed.";
-    if (mBroadcaster) {
+    if (!mBroadcaster) {
         mBroadcaster = new UdpBroadcaster(this);
         connect(mBroadcaster, &UdpBroadcaster::broadcastSent, this, &MainWindow::onBroadcastSent);
     }
 
     mBroadcaster->startBroadcasting();
     mStartBroadcastAction->setEnabled(false);
+    qDebug() << "mStartBroadcastAction->setEnabled was set to false";
     mStopBroadcastAction->setEnabled(true);
-
+    qDebug() << "mStopBroadcastAction->setEnabled was set to true";
     logMessage("Broadcasting started");
     mStatusBar->showMessage("Broadcasting started");
 }
@@ -194,6 +200,7 @@ void MainWindow::onTransactionAdded()
 
 void MainWindow::onBroadcastSent(const QString &data)
 {
+    qDebug() << "onBroadcastSent() was executed?";
     Q_UNUSED(data);
     logMessage("Transaction data broadcast sent");
 }
