@@ -176,6 +176,7 @@ void MainWindow::onTransactionAdded()
 {
     mTransactionModel->refreshModel();
     //mTransactionModel->expandAll();
+    //mTransactionView->resizeColumnToContents(0);
     updateActions();
 }
 
@@ -202,7 +203,7 @@ void MainWindow::setupUI()
     mTransactionView->setAlternatingRowColors(true);
     mTransactionView->header()->setStretchLastSection(true);
     mTransactionView->expandAll();
-
+    mTransactionView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
     mSplitter->addWidget(mTransactionView);
 
     mSplitter->setSizes({400,150});
