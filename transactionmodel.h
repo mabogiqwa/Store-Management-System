@@ -10,6 +10,13 @@
 #include "transactionmanager.h"
 #include "item.h"
 
+struct ItemIdentifier {
+    Transaction *transaction;
+    int itemIndex;
+
+    ItemIdentifier(Transaction *t, int idx) : transaction(t), itemIndex(idx) {}
+};
+
 class TransactionModel : public QAbstractItemModel
 {
     Q_OBJECT
@@ -35,6 +42,7 @@ private:
 
     QList<CustomerNode> mCustomerNodes;
     void buildCustomerNodes();
+    mutable QList<ItemIdentifier*> mItemIdentifiers;
 };
 
 #endif // TRANSACTIONMODEL_H

@@ -7,7 +7,8 @@ TransactionModel::TransactionModel(QObject *parent) : QAbstractItemModel(parent)
 
 TransactionModel::~TransactionModel()
 {
-
+    qDeleteAll(mItemIdentifiers);
+    mItemIdentifiers.clear();
 }
 
 QModelIndex TransactionModel::index(int row, int column, const QModelIndex &parent) const
@@ -16,11 +17,12 @@ QModelIndex TransactionModel::index(int row, int column, const QModelIndex &pare
         return QModelIndex();
 
     if (!parent.isValid()) {
-
+        // Top level - customers
         if (row < mCustomerNodes.size()) {
             return createIndex(row, column, nullptr);
         }
     } else if (!parent.parent().isValid()) {
+        // Second level - transactions under customers
         int customerIndex = parent.row();
         if (customerIndex < mCustomerNodes.size()) {
             const CustomerNode &node = mCustomerNodes[customerIndex];
@@ -29,14 +31,15 @@ QModelIndex TransactionModel::index(int row, int column, const QModelIndex &pare
             }
         }
     } else {
+        // Third level - items under transactions
         Transaction *transaction = static_cast<Transaction*>(parent.internalPointer());
         if (transaction) {
             const QList<PurchaseItem> &items = transaction->getItems();
             if (row < items.size()) {
-                void *itemPtr = reinterpret_cast<void*>(
-                    reinterpret_cast<uintptr_t>(transaction) + row + 1
-                );
-                return createIndex(row, column, itemPtr);
+                // Create a unique identifier for this item
+                ItemIdentifier *itemId = new ItemIdentifier(transaction, row);
+                mItemIdentifiers.append(itemId);
+                return createIndex(row, column, itemId);
             }
         }
     }
@@ -49,12 +52,32 @@ QModelIndex TransactionModel::parent(const QModelIndex &child) const
     if (!child.isValid())
         return QModelIndex();
 
-    Transaction *transaction = static_cast<Transaction*>(child.internalPointer());
+    void *ptr = child.internalPointer();
 
-    if (transaction) {
-        for (int i = 0; i < mCustomerNodes.size(); i++) {
-            if (mCustomerNodes[i].transactions.contains(transaction)) {
+    if (!ptr) {
+        // This is a customer node (top level), so no parent
+        return QModelIndex();
+    }
+
+    // Check if this is a transaction pointer
+    for (int i = 0; i < mCustomerNodes.size(); i++) {
+        const CustomerNode &node = mCustomerNodes[i];
+        for (int j = 0; j < node.transactions.size(); j++) {
+            if (ptr == node.transactions[j]) {
+                // This is a transaction, parent is customer
                 return createIndex(i, 0, nullptr);
+            }
+        }
+    }
+
+    // Check if this is an item identifier
+    ItemIdentifier *itemId = static_cast<ItemIdentifier*>(ptr);
+    for (int i = 0; i < mCustomerNodes.size(); i++) {
+        const CustomerNode &node = mCustomerNodes[i];
+        for (int j = 0; j < node.transactions.size(); j++) {
+            if (itemId->transaction == node.transactions[j]) {
+                // This is an item, parent is transaction
+                return createIndex(j, 0, itemId->transaction);
             }
         }
     }
@@ -65,11 +88,19 @@ QModelIndex TransactionModel::parent(const QModelIndex &child) const
 int TransactionModel::rowCount(const QModelIndex &parent) const
 {
     if (!parent.isValid()) {
+        // Top level - return number of customers
         return mCustomerNodes.size();
-    } else {
+    } else if (!parent.parent().isValid()) {
+        // Second level - return number of transactions for this customer
         int customerIndex = parent.row();
         if (customerIndex < mCustomerNodes.size()) {
             return mCustomerNodes[customerIndex].transactions.size();
+        }
+    } else {
+        // Third level - return number of items for this transaction
+        Transaction *transaction = static_cast<Transaction*>(parent.internalPointer());
+        if (transaction) {
+            return transaction->getItems().size();
         }
     }
 
@@ -89,9 +120,10 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
         return QVariant();
 
     if (role == Qt::DisplayRole) {
-        Transaction *transaction = static_cast<Transaction*>(index.internalPointer());
+        void *ptr = index.internalPointer();
 
-        if (!transaction) {
+        if (!ptr) {
+            // This is a customer node
             int customerIndex = index.row();
             if (customerIndex < mCustomerNodes.size()) {
                 const CustomerNode &node = mCustomerNodes[customerIndex];
@@ -100,22 +132,43 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
                 }
             }
         } else {
-            switch(index.column()) {
-                case 0:
-                    return transaction->getDateTime().toString("yyyy-MM-dd hh:mm:ss");
-                case 1: {
-                    QStringList itemNames;
-                    for (const PurchaseItem &item : transaction->getItems()) {
-                        itemNames << item.item->getName();
+            // Check if this is a transaction pointer
+            bool isTransaction = false;
+            for (int i = 0; i < mCustomerNodes.size() && !isTransaction; i++) {
+                const CustomerNode &node = mCustomerNodes[i];
+                for (int j = 0; j < node.transactions.size(); j++) {
+                    if (ptr == node.transactions[j]) {
+                        isTransaction = true;
+                        Transaction *transaction = node.transactions[j];
+                        switch(index.column()) {
+                        case 0:
+                            return transaction->getDateTime().toString("yyyy/MM/dd hh:mm");
+                        case 1:
+                            return QString(); // Empty for transaction row
+                        case 2:
+                            return QString(); // Empty for transaction row
+                        }
+                        break;
                     }
-                    return itemNames.join(", ");
                 }
-                case 2: {
-                    QStringList quantities;
-                    for (const PurchaseItem &item : transaction->getItems()) {
-                        quantities << QString::number(item.quantity);
+            }
+
+            if (!isTransaction) {
+                // This must be an item identifier
+                ItemIdentifier *itemId = static_cast<ItemIdentifier*>(ptr);
+                if (itemId && itemId->transaction) {
+                    const QList<PurchaseItem> &items = itemId->transaction->getItems();
+                    if (itemId->itemIndex < items.size()) {
+                        const PurchaseItem &item = items[itemId->itemIndex];
+                        switch(index.column()) {
+                        case 0:
+                            return item.item->getName();
+                        case 1:
+                            return item.item->getType() == Itemtype::Book ? "B" : "M";
+                        case 2:
+                            return item.quantity;
+                        }
                     }
-                    return quantities.join(", ");
                 }
             }
         }
@@ -128,9 +181,9 @@ QVariant TransactionModel::headerData(int section, Qt::Orientation orientation, 
 {
     if (orientation == Qt::Horizontal && role == Qt::DisplayRole) {
         switch (section) {
-            case 0: return "Customer/Date";
-            case 1: return "Items";
-            case 2: return "Quantities";
+            case 0: return "Transaction";
+            case 1: return "Type";
+            case 2: return "Quantity";
         }
     }
 
@@ -140,6 +193,11 @@ QVariant TransactionModel::headerData(int section, Qt::Orientation orientation, 
 void TransactionModel::refreshModel()
 {
     beginResetModel();
+
+    // Clean up old item identifiers
+    qDeleteAll(mItemIdentifiers);
+    mItemIdentifiers.clear();
+
     buildCustomerNodes();
     endResetModel();
 }
