@@ -48,7 +48,12 @@ void ReceiverWindow::setupUI()
 
     mFormattedDataTextEdit = new QTextEdit(this);
     mFormattedDataTextEdit->setReadOnly(true);
-    mFormattedDataTextEdit->hide();
+    mFormattedDataTextEdit->setPlaceholderText("Formatted transaction data will appear here...");
+    formattedLayout->addWidget(mFormattedDataTextEdit);
+
+    mDataTextEdit = new QTextEdit(this);
+    mDataTextEdit->setReadOnly(true);
+    mDataTextEdit->hide();
 
     splitter->addWidget(rawDataGroup);
     splitter->addWidget(formattedDataGroup);
