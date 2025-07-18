@@ -71,7 +71,7 @@ void ReceiverWindow::setupMenus()
     // File Menu
     mFileMenu = menuBar()->addMenu("&File");
 
-    mExitAction = new QAction("E&xit", this);
+    mExitAction = new QAction("&Exit", this);
     mExitAction->setShortcut(QKeySequence::Quit);
     mExitAction->setStatusTip("Exit the application");
     mFileMenu->addAction(mExitAction);
@@ -148,8 +148,17 @@ void ReceiverWindow::onStopListening()
 
 void ReceiverWindow::onClearData()
 {
+    if (mRawDataTextEdit) {
+        mRawDataTextEdit->clear();
+    }
+    if (mFormattedDataTextEdit) {
+        mFormattedDataTextEdit->clear();
+    }
     mDataTextEdit->clear();
-    //logMessage("Data cleared");
+    mMessageCount = 0;
+    if (mStatsLabel) {
+        mStatsLabel->setText("Message received: 0");
+    }
 }
 
 void ReceiverWindow::onAbout()
@@ -169,19 +178,103 @@ void ReceiverWindow::onExit()
 
 void ReceiverWindow::onDataReceived(const QString &data)
 {
-    QString timestamp = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
-    mDataTextEdit->append(QString("[%1] Received: %2").arg(timestamp, data));
-    //logMessage("UDP data received");
+    mMessageCount++;
+    QString timeStamp = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
+
+    mDataTextEdit->append(QString("[%1] Received: %2").arg(timeStamp, data));
+
+    if (mRawDataTextEdit) {
+        mRawDataTextEdit->append(QString("=== Message %1 [%2] ===").arg(mMessageCount).arg(timeStamp));
+        mRawDataTextEdit->append(data);
+        mRawDataTextEdit->append("");
+    }
+
+    if (mFormattedDataTextEdit) {
+        QString formattedData = formatXMLData(data);
+        mFormattedDataTextEdit->append(QString("=== Message %1 [%2] ===").arg(mMessageCount).arg(timeStamp));
+        mFormattedDataTextEdit->append(formattedData);
+        mFormattedDataTextEdit->append("");
+    }
+
+    if (mStatsLabel) {
+        mStatsLabel->setText(QString("Messages received: %1").arg(mMessageCount));
+    }
+}
+
+QString ReceiverWindow::formatXMLData(const QString &xmlData)
+{
+    // Simple XML parsing to create a more readable format
+    QString formatted = "";
+
+    // Parse transactions
+    QRegularExpression transactionRegex("<transaction>(.*?)</transaction>");
+    transactionRegex.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+
+    QRegularExpressionMatchIterator transactionIterator = transactionRegex.globalMatch(xmlData);
+    int transactionNum = 1;
+
+    while (transactionIterator.hasNext()) {
+        QRegularExpressionMatch transactionMatch = transactionIterator.next();
+        QString transactionContent = transactionMatch.captured(1);
+
+        formatted += QString("Transaction #%1:\n").arg(transactionNum++);
+
+        // Extract customer
+        QRegularExpression customerRegex("<customer>(.*?)</customer>");
+        QRegularExpressionMatch customerMatch = customerRegex.match(transactionContent);
+        if (customerMatch.hasMatch()) {
+            formatted += QString("  Customer: %1\n").arg(customerMatch.captured(1));
+        }
+
+        // Extract datetime
+        QRegularExpression datetimeRegex("<datetime>(.*?)</datetime>");
+        QRegularExpressionMatch datetimeMatch = datetimeRegex.match(transactionContent);
+        if (datetimeMatch.hasMatch()) {
+            formatted += QString("  Date/Time: %1\n").arg(datetimeMatch.captured(1));
+        }
+
+        // Extract items
+        formatted += "  Items:\n";
+        QRegularExpression itemRegex("<item>(.*?)</item>");
+        itemRegex.setPatternOptions(QRegularExpression::DotMatchesEverythingOption);
+
+        QRegularExpressionMatchIterator itemIterator = itemRegex.globalMatch(transactionContent);
+
+        while (itemIterator.hasNext()) {
+            QRegularExpressionMatch itemMatch = itemIterator.next();
+            QString itemContent = itemMatch.captured(1);
+
+            QString itemName = "";
+            QString itemQuantity = "";
+
+            QRegularExpression nameRegex("<name>(.*?)</name>");
+            QRegularExpressionMatch nameMatch = nameRegex.match(itemContent);
+            if (nameMatch.hasMatch()) {
+                itemName = nameMatch.captured(1);
+            }
+
+            QRegularExpression quantityRegex("<quantity>(.*?)</quantity>");
+            QRegularExpressionMatch quantityMatch = quantityRegex.match(itemContent);
+            if (quantityMatch.hasMatch()) {
+                itemQuantity = quantityMatch.captured(1);
+            }
+
+            formatted += QString("    - %1 (Qty: %2)\n").arg(itemName, itemQuantity);
+        }
+
+        formatted += "\n";
+    }
+
+    if (formatted.isEmpty()) {
+        formatted = "No transactions found in XML data.";
+    }
+
+    return formatted;
 }
 
 void ReceiverWindow::updateActions()
 {
     // Update action states based on current state
-}
-
-QString ReceiverWindow::formatXMLData(const QString &xmlData)
-{
-
 }
 
 /*

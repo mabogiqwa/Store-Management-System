@@ -2,6 +2,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/Assignment2-Programming-Assignment_autogen/moc_predefs.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/QDateTime \
   C:/Qt/6.9.0/mingw_64/include/QtCore/QObject \
+  C:/Qt/6.9.0/mingw_64/include/QtCore/QRegularExpressionMatchIterator \
   C:/Qt/6.9.0/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/q20functional.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/q20iterator.h \
@@ -88,6 +89,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Qt/6.9.0/mingw_64/include/QtCore/qprocessordetection.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qrect.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qrefcount.h \
+  C:/Qt/6.9.0/mingw_64/include/QtCore/qregularexpression.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qscopedpointer.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qscopeguard.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qset.h \
@@ -187,6 +189,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Qt/6.9.0/mingw_64/include/QtNetwork/qtnetworkglobal.h \
   C:/Qt/6.9.0/mingw_64/include/QtNetwork/qudpsocket.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QApplication \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/QGroupBox \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QHBoxLayout \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QLabel \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMainWindow \
@@ -204,6 +207,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qframe.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qgridlayout.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qgroupbox.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlabel.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlayout.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlayoutitem.h \

@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), mTransactionView(nullptr), mLogTextEdit(nullptr), mSplitter(nullptr), mTransactionModel(nullptr), mBroadcaster(nullptr)
+    : QMainWindow(parent), mTransactionView(nullptr), mLogTextEdit(nullptr), mSplitter(nullptr), mTransactionModel(nullptr), mBroadcaster(nullptr), mReceiverWindow(nullptr)
 {
     mAddCustomerAction = nullptr;
     mAddItemAction = nullptr;
@@ -32,6 +32,9 @@ MainWindow::~MainWindow()
     if (mBroadcaster) {
         mBroadcaster->stopBroadcasting();
         delete mBroadcaster;
+    }
+    if (mReceiverWindow) {
+        delete mReceiverWindow;
     }
 }
 
@@ -289,6 +292,11 @@ void MainWindow::setupMenus()
     mStopBroadcastAction->setEnabled(false);
     mNetworkMenu->addAction(mStopBroadcastAction);
 
+    mNetworkMenu->addSeparator();
+
+    mOpenReceiverAction = new QAction("&Open UDP Receiver", this);
+    mOpenReceiverAction->setStatusTip("Open UDP Receiver window");
+    mNetworkMenu->addAction(mOpenReceiverAction);
     //Add help menu later
     mHelpMenu = menuBar()->addMenu("&Help");
 
@@ -356,6 +364,9 @@ void MainWindow::setupConnections()
     if (mHelpAction) {
         connect(mHelpAction, &QAction::triggered, this, &MainWindow::onHelp);
     }
+    if (mOpenReceiverAction) {
+        connect(mOpenReceiverAction, &QAction::triggered, this, &MainWindow::onOpenReceiver);
+    }
 
     //Manager connections
     TransactionManager *transactionManager = TransactionManager::getInstance();
@@ -373,6 +384,17 @@ void MainWindow::setupConnections()
         connect(itemManager, &ItemManager::itemAdded, this, &MainWindow::updateActions);
         connect(itemManager, &ItemManager::itemsRestored, this, &MainWindow::updateActions);
     }
+}
+
+void MainWindow::onOpenReceiver()
+{
+    if (!mReceiverWindow) {
+        mReceiverWindow = new ReceiverWindow(this);
+    }
+
+    mReceiverWindow->show();
+    mReceiverWindow->raise();
+    mReceiverWindow->activateWindow();
 }
 
 void MainWindow::updateActions()

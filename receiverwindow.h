@@ -18,6 +18,7 @@
 #include <QStatusBar>
 #include <QApplication>
 #include <QDateTime>
+#include <QRegularExpressionMatchIterator>
 #include "udpreceiver.h"
 
 class ReceiverWindow : public QMainWindow

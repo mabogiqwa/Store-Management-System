@@ -320,6 +320,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/mainwindow.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/QDateTime
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/QList
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/QObject
+ mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/QRegularExpressionMatchIterator
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/QString
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/QStringList
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/QThread
@@ -470,6 +471,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/mainwindow.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/qxptype_traits.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/qyieldcpu.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/QAction
+ mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/QFont
  mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/qaction.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/qbitmap.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/qbrush.h
@@ -524,6 +526,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/mainwindow.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QLineEdit
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QListWidget
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMainWindow
+ mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMenu
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMenuBar
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMessageBox
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QPushButton
@@ -803,11 +806,13 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/mainwindow.h
  mdp:C:/Users/realm/Documents/Assignment2-Programming-Assignment/itemdialog.h
  mdp:C:/Users/realm/Documents/Assignment2-Programming-Assignment/itemmanager.h
  mdp:C:/Users/realm/Documents/Assignment2-Programming-Assignment/mainwindow.h
+ mdp:C:/Users/realm/Documents/Assignment2-Programming-Assignment/receiverwindow.h
  mdp:C:/Users/realm/Documents/Assignment2-Programming-Assignment/transaction.h
  mdp:C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactiondialog.h
  mdp:C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmanager.h
  mdp:C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmodel.h
  mdp:C:/Users/realm/Documents/Assignment2-Programming-Assignment/udpbroadcaster.h
+ mdp:C:/Users/realm/Documents/Assignment2-Programming-Assignment/udpreceiver.h
 C:/Users/realm/Documents/Assignment2-Programming-Assignment/item.h
 C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmanager.h
  mmc:Q_OBJECT
@@ -2602,6 +2607,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/receiverwindow.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/QDateTime
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/QObject
+ mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/QRegularExpressionMatchIterator
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/q17memory.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/q20functional.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/q20iterator.h
@@ -2688,6 +2694,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/receiverwindow.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/qprocessordetection.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/qrect.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/qrefcount.h
+ mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/qregularexpression.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/qscopedpointer.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/qscopeguard.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/qset.h
@@ -2787,6 +2794,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/receiverwindow.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtNetwork/qtnetworkglobal.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtNetwork/qudpsocket.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QApplication
+ mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QGroupBox
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QHBoxLayout
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QLabel
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMainWindow
@@ -2804,6 +2812,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/receiverwindow.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qframe.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qgridlayout.h
+ mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qgroupbox.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlabel.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlayout.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlayoutitem.h

@@ -26,6 +26,7 @@
 #include "transactionmanager.h"
 #include "transactionmodel.h"
 #include "udpbroadcaster.h"
+#include "receiverwindow.h"
 
 class MainWindow : public QMainWindow
 {
@@ -44,6 +45,7 @@ private slots:
     void onAbout();
     void onHelp();
     void onExit();
+    void onOpenReceiver();
 
     void onTransactionAdded();
     void onBroadcastSent(const QString &data);
@@ -72,6 +74,8 @@ private:
     QAction *mExitAction;
     QAction *mAboutAction;
     QAction *mHelpAction;
+    QAction *mOpenReceiverAction;
+    ReceiverWindow *mReceiverWindow;
 
     //Toolbar
     QToolBar *mToolBar;

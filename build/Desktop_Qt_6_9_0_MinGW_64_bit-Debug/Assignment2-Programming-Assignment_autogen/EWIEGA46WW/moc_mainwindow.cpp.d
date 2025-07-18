@@ -4,6 +4,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Qt/6.9.0/mingw_64/include/QtCore/QDateTime \
   C:/Qt/6.9.0/mingw_64/include/QtCore/QList \
   C:/Qt/6.9.0/mingw_64/include/QtCore/QObject \
+  C:/Qt/6.9.0/mingw_64/include/QtCore/QRegularExpressionMatchIterator \
   C:/Qt/6.9.0/mingw_64/include/QtCore/QString \
   C:/Qt/6.9.0/mingw_64/include/QtCore/QStringList \
   C:/Qt/6.9.0/mingw_64/include/QtCore/QThread \
@@ -154,6 +155,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Qt/6.9.0/mingw_64/include/QtCore/qxptype_traits.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qyieldcpu.h \
   C:/Qt/6.9.0/mingw_64/include/QtGui/QAction \
+  C:/Qt/6.9.0/mingw_64/include/QtGui/QFont \
   C:/Qt/6.9.0/mingw_64/include/QtGui/qaction.h \
   C:/Qt/6.9.0/mingw_64/include/QtGui/qbitmap.h \
   C:/Qt/6.9.0/mingw_64/include/QtGui/qbrush.h \
@@ -208,6 +210,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QLineEdit \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QListWidget \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMainWindow \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMenu \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMenuBar \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMessageBox \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QPushButton \
@@ -485,8 +488,10 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Users/realm/Documents/Assignment2-Programming-Assignment/item.h \
   C:/Users/realm/Documents/Assignment2-Programming-Assignment/itemdialog.h \
   C:/Users/realm/Documents/Assignment2-Programming-Assignment/itemmanager.h \
+  C:/Users/realm/Documents/Assignment2-Programming-Assignment/receiverwindow.h \
   C:/Users/realm/Documents/Assignment2-Programming-Assignment/transaction.h \
   C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactiondialog.h \
   C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmanager.h \
   C:/Users/realm/Documents/Assignment2-Programming-Assignment/transactionmodel.h \
-  C:/Users/realm/Documents/Assignment2-Programming-Assignment/udpbroadcaster.h
+  C:/Users/realm/Documents/Assignment2-Programming-Assignment/udpbroadcaster.h \
+  C:/Users/realm/Documents/Assignment2-Programming-Assignment/udpreceiver.h
