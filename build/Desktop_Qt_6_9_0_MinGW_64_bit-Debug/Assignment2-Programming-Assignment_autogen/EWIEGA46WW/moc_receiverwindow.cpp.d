@@ -142,6 +142,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Qt/6.9.0/mingw_64/include/QtCore/qxptype_traits.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qyieldcpu.h \
   C:/Qt/6.9.0/mingw_64/include/QtGui/QAction \
+  C:/Qt/6.9.0/mingw_64/include/QtGui/QFont \
   C:/Qt/6.9.0/mingw_64/include/QtGui/qaction.h \
   C:/Qt/6.9.0/mingw_64/include/QtGui/qbitmap.h \
   C:/Qt/6.9.0/mingw_64/include/QtGui/qbrush.h \
@@ -160,6 +161,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Qt/6.9.0/mingw_64/include/QtGui/qpaintdevice.h \
   C:/Qt/6.9.0/mingw_64/include/QtGui/qpalette.h \
   C:/Qt/6.9.0/mingw_64/include/QtGui/qpen.h \
+  C:/Qt/6.9.0/mingw_64/include/QtGui/qpicture.h \
   C:/Qt/6.9.0/mingw_64/include/QtGui/qpixelformat.h \
   C:/Qt/6.9.0/mingw_64/include/QtGui/qpixmap.h \
   C:/Qt/6.9.0/mingw_64/include/QtGui/qpolygon.h \
@@ -185,10 +187,13 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Qt/6.9.0/mingw_64/include/QtNetwork/qtnetworkglobal.h \
   C:/Qt/6.9.0/mingw_64/include/QtNetwork/qudpsocket.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QApplication \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/QHBoxLayout \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/QLabel \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMainWindow \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMenu \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMenuBar \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMessageBox \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/QSplitter \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QStatusBar \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QTextEdit \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QVBoxLayout \
@@ -199,6 +204,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qframe.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qgridlayout.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlabel.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlayout.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlayoutitem.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qmainwindow.h \
@@ -206,6 +212,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/build/Desktop_Qt_6_9
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qmenubar.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qmessagebox.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qsizepolicy.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qsplitter.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qstatusbar.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qtabwidget.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qtextedit.h \

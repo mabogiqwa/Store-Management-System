@@ -13,7 +13,7 @@ ReceiverWindow::ReceiverWindow(QWidget *parent)
     setWindowTitle("UDP Receiver");
     resize(600, 400);
 
-    logMessage("UDP Receiver started");
+    //logMessage("UDP Receiver started");
     updateActions();
 }
 
@@ -102,7 +102,7 @@ void ReceiverWindow::onStartListening()
     mStartListeningAction->setEnabled(false);
     mStopListeningAction->setEnabled(true);
 
-    logMessage("Started listening for UDP broadcasts on port 12345");
+    //logMessage("Started listening for UDP broadcasts on port 12345");
     mStatusBar->showMessage("Listening for UDP broadcasts");
 }
 
@@ -115,14 +115,14 @@ void ReceiverWindow::onStopListening()
     mStartListeningAction->setEnabled(true);
     mStopListeningAction->setEnabled(false);
 
-    logMessage("Stopped listening for UDP broadcasts");
+    //logMessage("Stopped listening for UDP broadcasts");
     mStatusBar->showMessage("Stopped listening", 3000);
 }
 
 void ReceiverWindow::onClearData()
 {
     mDataTextEdit->clear();
-    logMessage("Data cleared");
+    //logMessage("Data cleared");
 }
 
 void ReceiverWindow::onAbout()
@@ -144,7 +144,7 @@ void ReceiverWindow::onDataReceived(const QString &data)
 {
     QString timestamp = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
     mDataTextEdit->append(QString("[%1] Received: %2").arg(timestamp, data));
-    logMessage("UDP data received");
+    //logMessage("UDP data received");
 }
 
 void ReceiverWindow::updateActions()
@@ -152,9 +152,16 @@ void ReceiverWindow::updateActions()
     // Update action states based on current state
 }
 
+QString ReceiverWindow::formatXMLData(const QString &xmlData)
+{
+
+}
+
+/*
 void ReceiverWindow::logMessage(const QString &message)
 {
-    QString timestamp = QDateTime::currentDateTime().toString("hh:mm:ss");
+    //QString timestamp = QDateTime::currentDateTime().toString("hh:mm:ss");
     // You could add a separate log widget or use status bar
-    mStatusBar->showMessage(QString("[%1] %2").arg(timestamp, message), 5000);
+    //mStatusBar->showMessage(QString("[%1] %2").arg(timestamp, message), 5000);
 }
+*/

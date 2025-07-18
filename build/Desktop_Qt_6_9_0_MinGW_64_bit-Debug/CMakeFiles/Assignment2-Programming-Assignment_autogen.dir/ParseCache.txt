@@ -2742,6 +2742,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/receiverwindow.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/qxptype_traits.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtCore/qyieldcpu.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/QAction
+ mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/QFont
  mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/qaction.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/qbitmap.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/qbrush.h
@@ -2760,6 +2761,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/receiverwindow.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/qpaintdevice.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/qpalette.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/qpen.h
+ mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/qpicture.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/qpixelformat.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/qpixmap.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtGui/qpolygon.h
@@ -2785,10 +2787,13 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/receiverwindow.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtNetwork/qtnetworkglobal.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtNetwork/qudpsocket.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QApplication
+ mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QHBoxLayout
+ mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QLabel
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMainWindow
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMenu
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMenuBar
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMessageBox
+ mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QSplitter
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QStatusBar
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QTextEdit
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/QVBoxLayout
@@ -2799,6 +2804,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/receiverwindow.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qframe.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qgridlayout.h
+ mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlabel.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlayout.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlayoutitem.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qmainwindow.h
@@ -2806,6 +2812,7 @@ C:/Users/realm/Documents/Assignment2-Programming-Assignment/receiverwindow.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qmenubar.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qmessagebox.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qsizepolicy.h
+ mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qsplitter.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qstatusbar.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qtabwidget.h
  mdp:C:/Qt/6.9.0/mingw_64/include/QtWidgets/qtextedit.h

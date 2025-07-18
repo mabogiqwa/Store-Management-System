@@ -7,6 +7,11 @@
 #include <QStatusBar>
 #include <QTextEdit>
 #include <QAction>
+#include <QMenu>
+#include <QFont>
+#include <QSplitter>
+#include <QHBoxLayout>
+#include <QLabel>
 #include <QVBoxLayout>
 #include <QMessageBox>
 #include <QStatusBar>
@@ -14,44 +19,50 @@
 #include <QDateTime>
 #include "udpreceiver.h"
 
-class UdpReceiver;
-
 class ReceiverWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit ReceiverWindow(QWidget *parent = nullptr);
+    ReceiverWindow(QWidget *parent = nullptr);
     ~ReceiverWindow();
-
 private slots:
     void onStartListening();
     void onStopListening();
     void onClearData();
     void onAbout();
     void onExit();
-
     void onDataReceived(const QString &data);
 private:
+    void setupUI();
+    void setupMenus();
+    void setupStatusBar();
+    void setupConnections();
+    void updateActions();
+    QString formatXMLData(const QString &xmlData);
+
+    //UI comps
     QTextEdit *mDataTextEdit;
+    QTextEdit *mRawDataTextEdit;
+    QTextEdit *mFormattedDataTextEdit;
+    QLabel *mStatsLabel;
+
+    //Menus and Actions
     QMenu *mFileMenu;
     QMenu *mNetworkMenu;
     QMenu *mHelpMenu;
     QAction *mStartListeningAction;
     QAction *mStopListeningAction;
-    QAction *clearDataAction;
+    QAction *mClearDataAction;
     QAction *mExitAction;
     QAction *mAboutAction;
-    QAction *mClearDataAction;
+
+    //Status bar
     QStatusBar *mStatusBar;
+
     UdpReceiver *mReceiver;
 
-    void setupUI();
-    void setupMenus();
-    void setupStatusBar();
-    void setupConnections();
-
-    void updateActions();
-    void logMessage(const QString &message);
+    //Stats
+    int mMessageCount;
 };
 
-#endif // RECEIVERWINDOW_H
+#endif
