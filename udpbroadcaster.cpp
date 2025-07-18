@@ -1,94 +1,78 @@
 #include "udpbroadcaster.h"
 #include <QDebug>
 
-UdpBroadcaster::UdpBroadcaster(QObject *parent) : QObject(parent), mSocket(nullptr), mTimer(nullptr), mBroadcasting(false), mThread(nullptr)
+UdpBroadcaster::UdpBroadcaster(QObject *parent)
+    : QObject(parent), mSocket(nullptr), mTimer(nullptr), mBroadcasting(false)
 {
-    mSocket = new QUdpSocket();
-    mTimer = new QTimer();
-    mThread = new QThread();
+    // Create objects in the main thread - no threading complications
+    mSocket = new QUdpSocket(this);
+    mTimer = new QTimer(this);
 
-    this->moveToThread(mThread);
-    mSocket->moveToThread(mThread);
-    mTimer->moveToThread(mThread);
-
+    // Connect the timer to broadcast function
     connect(mTimer, &QTimer::timeout, this, &UdpBroadcaster::broadcastData);
-    connect(mThread, &QThread::started, this, &UdpBroadcaster::onThreadStarted);
-    connect(mThread, &QThread::finished, this, &UdpBroadcaster::onThreadFinished);
 }
 
 UdpBroadcaster::~UdpBroadcaster() {
     stopBroadcasting();
-
-    if (mThread && mThread->isRunning()) {
-        mThread->quit();
-        mThread->wait();
-    }
-
-    delete mSocket;
-    delete mTimer;
-    delete mThread;
 }
 
 void UdpBroadcaster::startBroadcasting()
 {
     qDebug() << "startBroadcasting() was executed";
+
     if (mBroadcasting) {
+        qDebug() << "Already broadcasting";
         return;
     }
 
     mBroadcasting = true;
 
-    if (mThread && !mThread->isRunning()) {
-        mThread->start();
+    if (mTimer) {
+        mTimer->start(5000); // Broadcast every 5 seconds
+        qDebug() << "Timer started - broadcasting every 5 seconds";
     }
+
     qDebug() << "Finished executing startBroadcasting()";
 }
 
 void UdpBroadcaster::stopBroadcasting()
 {
     qDebug() << "stopBroadcasting() was called";
-    if (mBroadcasting) {
-        qDebug() << "stopping broadcasting";
-        mBroadcasting = false;
 
-        if (mTimer) {
-            QMetaObject::invokeMethod(mTimer,"stop",Qt::QueuedConnection);
-        }
-
-        if (mThread && mThread->isRunning()) {
-            mThread->quit();
-            mThread->wait();
-        }
+    if (!mBroadcasting) {
+        qDebug() << "Not currently broadcasting";
+        return;
     }
-}
 
-void UdpBroadcaster::onThreadStarted() {
-    qDebug() << "Thread started, beginning broadcast timer";
-    if (mTimer) {
-        mTimer->start(5000);
-    }
-}
+    mBroadcasting = false;
 
-void UdpBroadcaster::onThreadFinished() {
-    qDebug() << "Thread finished";
     if (mTimer) {
         mTimer->stop();
+        qDebug() << "Timer stopped";
     }
+
+    qDebug() << "Broadcasting stopped successfully";
 }
-
-
 
 void UdpBroadcaster::broadcastData()
 {
     if (!mBroadcasting || !mSocket) {
         return;
     }
+
+    qDebug() << "Broadcasting data...";
+
     QString xmlData = generateXMLData();
     QByteArray data = xmlData.toUtf8();
 
-    mSocket->writeDatagram(data, QHostAddress::Broadcast, 12345);
+    qint64 bytesWritten = mSocket->writeDatagram(data, QHostAddress::Broadcast, 12345);
 
-    emit broadcastSent(xmlData);
+    if (bytesWritten != -1) {
+        qDebug() << "Broadcast sent successfully:" << bytesWritten << "bytes";
+        emit broadcastSent(xmlData);
+    } else {
+        qDebug() << "Failed to send broadcast";
+    }
 }
 
 QString UdpBroadcaster::generateXMLData()
@@ -98,19 +82,28 @@ QString UdpBroadcaster::generateXMLData()
 
     TransactionManager *transactionManager = TransactionManager::getInstance();
     if (!transactionManager) {
+        qDebug() << "TransactionManager is null";
         xml += "</transactions>";
         return xml;
     }
 
     QList<Transaction*> transactions = transactionManager->getTransactions();
+    qDebug() << "Found" << transactions.size() << "transactions to broadcast";
 
     for (Transaction *transaction : transactions) {
+        if (!transaction || !transaction->getCustomer()) {
+            continue;
+        }
+
         xml += "  <transaction>\n";
         xml += QString("   <customer>%1</customer>\n").arg(transaction->getCustomer()->getName());
         xml += QString("   <datetime>%1</datetime>\n").arg(transaction->getDateTime().toString(Qt::ISODate));
         xml += "   <items>\n";
 
         for (const PurchaseItem &item : transaction->getItems()) {
+            if (!item.item) {
+                continue;
+            }
             xml += "     <item>\n";
             xml += QString("      <name>%1</name>\n").arg(item.item->getName());
             xml += QString("      <quantity>%1</quantity>\n").arg(item.quantity);

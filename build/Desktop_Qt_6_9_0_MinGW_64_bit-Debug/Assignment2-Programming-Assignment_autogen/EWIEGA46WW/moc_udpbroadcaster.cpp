@@ -43,9 +43,7 @@ template <> constexpr inline auto UdpBroadcaster::qt_create_metaobjectdata<qt_me
         "",
         "data",
         "dataRequested",
-        "broadcastData",
-        "onThreadStarted",
-        "onThreadFinished"
+        "broadcastData"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -57,10 +55,6 @@ template <> constexpr inline auto UdpBroadcaster::qt_create_metaobjectdata<qt_me
         QtMocHelpers::SignalData<void()>(4, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'broadcastData'
         QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onThreadStarted'
-        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onThreadFinished'
-        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -87,8 +81,6 @@ void UdpBroadcaster::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 0: _t->broadcastSent((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 1: _t->dataRequested(); break;
         case 2: _t->broadcastData(); break;
-        case 3: _t->onThreadStarted(); break;
-        case 4: _t->onThreadFinished(); break;
         default: ;
         }
     }
@@ -119,14 +111,14 @@ int UdpBroadcaster::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 3;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 5;
+        _id -= 3;
     }
     return _id;
 }

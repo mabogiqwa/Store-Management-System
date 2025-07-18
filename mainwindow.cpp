@@ -114,7 +114,7 @@ void MainWindow::onCreateTransaction()
 void MainWindow::onRestoreItems()
 {
     int ret = QMessageBox::question(this,"Restore Items","Are you sure you want to restore items from backup? This will replace the current item list.", QMessageBox::Yes, QMessageBox::No);
-    qDebug() << "the question was asked";
+    //qDebug() << "the question was asked";
     if (ret == QMessageBox::Yes) {
         ItemManager::getInstance()->restoreFromBackup();
         //logMessage("Items restored from backup");
@@ -138,25 +138,41 @@ void MainWindow::onStartBroadcast()
     }
 
     mBroadcaster->startBroadcasting();
-    //mStartBroadcastAction->setEnabled(false);
-    qDebug() << "mStartBroadcastAction->setEnabled was set to false";
-    //mStopBroadcastAction->setEnabled(true);
-    qDebug() << "mStopBroadcastAction->setEnabled was set to true";
+
+    if (mStartBroadcastAction) {
+        mStartBroadcastAction->setEnabled(false);
+        qDebug() << "mStartBroadcastAction->setEnabled was set to false";
+    }
+
+    if (mStopBroadcastAction) {
+        mStopBroadcastAction->setEnabled(true);
+        qDebug() << "mStopBroadcastAction->setEnabled was set to true";
+    }
+
     //logMessage("Broadcasting started");
     //mStatusBar->showMessage("Broadcasting started");
 }
 
 void MainWindow::onStopBroadcast()
 {
+    qDebug() << "Clicked on onStopBroadcast()";
     if (mBroadcaster) {
         mBroadcaster->stopBroadcasting();
     }
 
-    mStartBroadcastAction->setEnabled(true);
-    mStopBroadcastAction->setEnabled(false);
+    if (mStartBroadcastAction) {
+        mStartBroadcastAction->setEnabled(true);
+        qDebug() << "Start broadcast action enabled";
+    }
 
-    logMessage("Broadcasting stopped");
-    mStatusBar->showMessage("Broadcasting stopped", 3000);
+    if (mStopBroadcastAction) {
+        mStopBroadcastAction->setEnabled(false);
+        qDebug() << "Stop broadcast action stopped";
+    }
+
+
+    //logMessage("Broadcasting stopped");
+    //mStatusBar->showMessage("Broadcasting stopped", 3000);
 }
 
 void MainWindow::onAbout()
@@ -202,7 +218,7 @@ void MainWindow::onBroadcastSent(const QString &data)
 {
     qDebug() << "onBroadcastSent() was executed?";
     Q_UNUSED(data);
-    logMessage("Transaction data broadcast sent");
+    //logMessage("Transaction data broadcast sent");
 }
 
 void MainWindow::setupUI()

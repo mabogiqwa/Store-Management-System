@@ -24,13 +24,13 @@ signals:
     void dataRequested();
 private slots:
     void broadcastData();
-    void onThreadStarted();      // private slot
-    void onThreadFinished();
+    //void onThreadStarted();      // private slot
+    //void onThreadFinished();
 private:
     QUdpSocket *mSocket;
     QTimer *mTimer;
     bool mBroadcasting;
-    QThread *mThread;
+    //QThread *mThread;
     QString generateXMLData();
 };
 
