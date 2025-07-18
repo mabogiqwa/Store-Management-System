@@ -8,6 +8,7 @@
 #include <QTextEdit>
 #include <QAction>
 #include <QMenu>
+#include <QGroupBox>
 #include <QFont>
 #include <QSplitter>
 #include <QHBoxLayout>

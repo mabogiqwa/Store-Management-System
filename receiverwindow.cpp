@@ -32,11 +32,33 @@ void ReceiverWindow::setupUI()
 
     QVBoxLayout *mainLayout = new QVBoxLayout(centralWidget);
 
-    mDataTextEdit = new QTextEdit(this);
-    mDataTextEdit->setReadOnly(true);
-    mDataTextEdit->setPlaceholderText("Received UDP data will appear here...");
+    QSplitter *splitter = new QSplitter(Qt::Horizontal, this);
 
-    mainLayout->addWidget(mDataTextEdit);
+    QGroupBox *rawDataGroup = new QGroupBox("Raw XML Data", this);
+    QVBoxLayout *rawLayout = new QVBoxLayout(rawDataGroup);
+
+    mRawDataTextEdit = new QTextEdit(this);
+    mRawDataTextEdit->setReadOnly(true);
+    mRawDataTextEdit->setPlaceholderText("Raw XML data will appear here...");
+    mRawDataTextEdit->setFont(QFont("Courier", 10));
+    rawLayout->addWidget(mRawDataTextEdit);
+
+    QGroupBox *formattedDataGroup = new QGroupBox("Formatted Transaction Data", this);
+    QVBoxLayout *formattedLayout = new QVBoxLayout(formattedDataGroup);
+
+    mFormattedDataTextEdit = new QTextEdit(this);
+    mFormattedDataTextEdit->setReadOnly(true);
+    mFormattedDataTextEdit->hide();
+
+    splitter->addWidget(rawDataGroup);
+    splitter->addWidget(formattedDataGroup);
+    splitter->setSizes({400, 500});
+
+    mStatsLabel = new QLabel("Messages received: 0", this);
+    mStatsLabel->setStyleSheet("QLabel { color : blue; font-weight: bold; }");
+
+    mainLayout->addWidget(mStatsLabel);
+    mainLayout->addWidget(splitter);
 }
 
 void ReceiverWindow::setupMenus()
