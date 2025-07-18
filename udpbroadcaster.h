@@ -10,7 +10,7 @@
 #include "item.h"
 #include <QHostAddress>
 
-class UdpBroadcaster : public QThread
+class UdpBroadcaster : public QObject
 {
     Q_OBJECT
 public:
@@ -22,15 +22,15 @@ public:
 signals:
     void broadcastSent(const QString &data);
     void dataRequested();
-protected:
-    void run() override;
-
 private slots:
     void broadcastData();
+    void onThreadStarted();      // private slot
+    void onThreadFinished();
 private:
     QUdpSocket *mSocket;
     QTimer *mTimer;
     bool mBroadcasting;
+    QThread *mThread;
     QString generateXMLData();
 };
 

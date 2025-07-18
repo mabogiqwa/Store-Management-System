@@ -1,27 +1,45 @@
 #include "udpbroadcaster.h"
 #include <QDebug>
 
-UdpBroadcaster::UdpBroadcaster(QObject *parent) : QThread(parent), mSocket(nullptr), mTimer(nullptr), mBroadcasting(false)
+UdpBroadcaster::UdpBroadcaster(QObject *parent) : QObject(parent), mSocket(nullptr), mTimer(nullptr), mBroadcasting(false), mThread(nullptr)
 {
+    mSocket = new QUdpSocket();
+    mTimer = new QTimer();
+    mThread = new QThread();
 
+    this->moveToThread(mThread);
+    mSocket->moveToThread(mThread);
+    mTimer->moveToThread(mThread);
+
+    connect(mTimer, &QTimer::timeout, this, &UdpBroadcaster::broadcastData);
+    connect(mThread, &QThread::started, this, &UdpBroadcaster::onThreadStarted);
+    connect(mThread, &QThread::finished, this, &UdpBroadcaster::onThreadFinished);
 }
 
 UdpBroadcaster::~UdpBroadcaster() {
     stopBroadcasting();
-    if (isRunning()) {
-        quit();
-        wait();
+
+    if (mThread && mThread->isRunning()) {
+        mThread->quit();
+        mThread->wait();
     }
+
+    delete mSocket;
+    delete mTimer;
+    delete mThread;
 }
 
 void UdpBroadcaster::startBroadcasting()
 {
     qDebug() << "startBroadcasting() was executed";
-    stopBroadcasting();
+    if (mBroadcasting) {
+        return;
+    }
 
-    if (isRunning()) {
-        quit();
-        wait();
+    mBroadcasting = true;
+
+    if (mThread && !mThread->isRunning()) {
+        mThread->start();
     }
     qDebug() << "Finished executing startBroadcasting()";
 }
@@ -30,32 +48,39 @@ void UdpBroadcaster::stopBroadcasting()
 {
     qDebug() << "stopBroadcasting() was called";
     if (mBroadcasting) {
-        qDebug() << "mBroadcasting is not nullptr";
-        mBroadcasting = true;
-        start();
+        qDebug() << "stopping broadcasting";
+        mBroadcasting = false;
+
+        if (mTimer) {
+            QMetaObject::invokeMethod(mTimer,"stop",Qt::QueuedConnection);
+        }
+
+        if (mThread && mThread->isRunning()) {
+            mThread->quit();
+            mThread->wait();
+        }
     }
 }
 
-void UdpBroadcaster::run()
-{
-    mSocket = new QUdpSocket();
-    mTimer = new QTimer();
-
-    connect(mTimer, &QTimer::timeout, this, &UdpBroadcaster::broadcastData);
-
-    mTimer->start(5000);
-
-    exec();
-
-    delete mSocket;
-    delete mTimer;
-    mSocket = nullptr;
-    mTimer = nullptr;
+void UdpBroadcaster::onThreadStarted() {
+    qDebug() << "Thread started, beginning broadcast timer";
+    if (mTimer) {
+        mTimer->start(5000);
+    }
 }
+
+void UdpBroadcaster::onThreadFinished() {
+    qDebug() << "Thread finished";
+    if (mTimer) {
+        mTimer->stop();
+    }
+}
+
+
 
 void UdpBroadcaster::broadcastData()
 {
-    if (!mBroadcasting || mSocket) {
+    if (!mBroadcasting || !mSocket) {
         return;
     }
     QString xmlData = generateXMLData();
@@ -72,6 +97,11 @@ QString UdpBroadcaster::generateXMLData()
     xml += "<transactions>\n";
 
     TransactionManager *transactionManager = TransactionManager::getInstance();
+    if (!transactionManager) {
+        xml += "</transactions>";
+        return xml;
+    }
+
     QList<Transaction*> transactions = transactionManager->getTransactions();
 
     for (Transaction *transaction : transactions) {
@@ -81,10 +111,10 @@ QString UdpBroadcaster::generateXMLData()
         xml += "   <items>\n";
 
         for (const PurchaseItem &item : transaction->getItems()) {
-            xml += "   <item>\n";
-            xml += QString("    <name>%1</name>\n").arg(item.item->getName());
-            xml += QString("    <quantity>%1</quantity>\n").arg(item.quantity);
-            xml += "    </item>\n";
+            xml += "     <item>\n";
+            xml += QString("      <name>%1</name>\n").arg(item.item->getName());
+            xml += QString("      <quantity>%1</quantity>\n").arg(item.quantity);
+            xml += "     </item>\n";
         }
 
         xml += "   </items>\n";

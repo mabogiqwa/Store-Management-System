@@ -3,13 +3,6 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), mTransactionView(nullptr), mLogTextEdit(nullptr), mSplitter(nullptr), mTransactionModel(nullptr), mBroadcaster(nullptr)
 {
-    //qDebug() << "MainWindow constructor done";
-    setupUI();
-    setupMenus();
-    setupToolBar();
-    setupStatusBar();
-    setupConnections();
-
     mAddCustomerAction = nullptr;
     mAddItemAction = nullptr;
     mCreateTransactionAction = nullptr;
@@ -19,6 +12,13 @@ MainWindow::MainWindow(QWidget *parent)
     mExitAction = nullptr;
     mAboutAction = nullptr;
     mHelpAction = nullptr;
+
+    //qDebug() << "MainWindow constructor done";
+    setupUI();
+    setupMenus();
+    setupToolBar();
+    setupStatusBar();
+    setupConnections();
 
     setWindowTitle("Store Management System");
     resize(800,600);
@@ -138,12 +138,12 @@ void MainWindow::onStartBroadcast()
     }
 
     mBroadcaster->startBroadcasting();
-    mStartBroadcastAction->setEnabled(false);
+    //mStartBroadcastAction->setEnabled(false);
     qDebug() << "mStartBroadcastAction->setEnabled was set to false";
-    mStopBroadcastAction->setEnabled(true);
+    //mStopBroadcastAction->setEnabled(true);
     qDebug() << "mStopBroadcastAction->setEnabled was set to true";
-    logMessage("Broadcasting started");
-    mStatusBar->showMessage("Broadcasting started");
+    //logMessage("Broadcasting started");
+    //mStatusBar->showMessage("Broadcasting started");
 }
 
 void MainWindow::onStopBroadcast()

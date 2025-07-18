@@ -43,7 +43,9 @@ template <> constexpr inline auto UdpBroadcaster::qt_create_metaobjectdata<qt_me
         "",
         "data",
         "dataRequested",
-        "broadcastData"
+        "broadcastData",
+        "onThreadStarted",
+        "onThreadFinished"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -55,6 +57,10 @@ template <> constexpr inline auto UdpBroadcaster::qt_create_metaobjectdata<qt_me
         QtMocHelpers::SignalData<void()>(4, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'broadcastData'
         QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onThreadStarted'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onThreadFinished'
+        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -64,7 +70,7 @@ template <> constexpr inline auto UdpBroadcaster::qt_create_metaobjectdata<qt_me
             qt_methods, qt_properties, qt_enums);
 }
 Q_CONSTINIT const QMetaObject UdpBroadcaster::staticMetaObject = { {
-    QMetaObject::SuperData::link<QThread::staticMetaObject>(),
+    QMetaObject::SuperData::link<QObject::staticMetaObject>(),
     qt_staticMetaObjectStaticContent<qt_meta_tag_ZN14UdpBroadcasterE_t>.stringdata,
     qt_staticMetaObjectStaticContent<qt_meta_tag_ZN14UdpBroadcasterE_t>.data,
     qt_static_metacall,
@@ -81,6 +87,8 @@ void UdpBroadcaster::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 0: _t->broadcastSent((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 1: _t->dataRequested(); break;
         case 2: _t->broadcastData(); break;
+        case 3: _t->onThreadStarted(); break;
+        case 4: _t->onThreadFinished(); break;
         default: ;
         }
     }
@@ -102,23 +110,23 @@ void *UdpBroadcaster::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN14UdpBroadcasterE_t>.strings))
         return static_cast<void*>(this);
-    return QThread::qt_metacast(_clname);
+    return QObject::qt_metacast(_clname);
 }
 
 int UdpBroadcaster::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QThread::qt_metacall(_c, _id, _a);
+    _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 5;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 5)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 5;
     }
     return _id;
 }
