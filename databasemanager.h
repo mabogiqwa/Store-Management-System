@@ -9,7 +9,7 @@
 #include "transaction.h"
 #include "item.h"
 #include "customer.h"
-
+//
 class DatabaseManager
 {
 public:
